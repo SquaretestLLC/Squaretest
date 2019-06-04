@@ -96,7 +96,7 @@ Similarly, Squaretest also generates doAnswer() statements for dependency intera
 * Squaretest can configure your [Module Settings](https://squaretest.com/#user_guide_module_settings) automatically in many cases; see [Module Configuration](https://squaretest.com/#user_guide_module_config) for more.
 
 ## Support
-Please feel free track bugs here and post feedback, questions and feature-requests to the [support forum](https://squaretest.com#support).
+Please feel free track bugs here and post feedback, questions and feature requests to the [forum](https://squaretest.com/#forum).
 
 ## Terms and Conditions
 By installing and using Squaretest, you agree to the [Terms and Conditions](https://squaretest.com/docs/eula-terms.html).
