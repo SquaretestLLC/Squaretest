@@ -8,18 +8,18 @@ and compare the returned values to expected values. The tests also include Mocki
 ## Create a Test Class for a Java Class
 Select **Squaretest | Generate Test - Ask to Confirm Mocks** (Alt+Insert+Generate Test - Ask to Confirm Mocks) to create a test class for your Java source class.
 
-![Generate Test Gif](https://squaretest.com/images/gifs/CreateTestClassJUnit5.gif)
+![Generate Test Gif](https://squaretest.com/images/gifs/V1_5/CreateTestClass.gif)
 
 ## Create Test Methods
 Select **Squaretest | Generate Test Methods** (Alt+Insert+Generate Test Methods) to see a list of test methods to add to your test class.
 The list includes tests for alternate flows for each source method; e.g. if a source method calls foo.bar(), and bar() can throw an IOException, Squaretest will suggest a method called testMethodName_FooThrowsIOException(); the generated test method will stub foo to throw an IOException when bar() called.
 
-![Generate Test Method Gif](https://squaretest.com/images/gifs/CreateMultipleMethodsJUnit5.gif)
+![Generate Test Method Gif](https://squaretest.com/images/gifs/V1_5/CreateTestMethods.gif)
 
 ## Create a Test Method
 Start typing the name of the test method you want to create to see code completion suggestions based on the methods in your source class; then select one of the suggested methods to create it.
 
-![Generate Test Method Gif](https://squaretest.com/images/gifs/CreateTestMethodJUnit5.gif)
+![Generate Test Method Gif](https://squaretest.com/images/gifs/V1_5/CreateTestMethod.gif)
 
 ## Features
 
