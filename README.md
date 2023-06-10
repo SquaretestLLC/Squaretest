@@ -6,7 +6,7 @@ dependencies to either mocks or reasonable default values. The test classes incl
 and compare the returned values to expected values. The tests also include Mockito stubs; i.e. when(), doAnswer() statements and verify() statements.
 
 ## Create a Test Class for a Java Class
-Select **Squaretest | Generate Test - Ask to Confirm Mocks** (Alt+Insert+Generate Test - Ask to Confirm Mocks) to create a test class for your Java source class.
+Select **Squaretest | Generate Test - Confirm Mocks** (Alt+Insert+Generate Test - Confirm Mocks) to create a test class for your Java source class.
 
 ![Generate Test Gif](https://squaretest.com/images/gifs/V1_5/CreateTestClass.gif)
 
@@ -24,7 +24,7 @@ Start typing the name of the test method you want to create to see code completi
 ## Features
 
 ### Generate a Test Class for Your Java Class with One Action
-Use the configurable keyboard shortcut: `ctrl+alt+K` on Windows and Linux or `cmd+shift+L` on OS X to generate a test class in either Java (1.7+) or Groovy.
+Use the configurable keyboard shortcut: `ctrl+alt+K` on Windows and Linux or `cmd+shift+L` on OS X to generate a test class in either Java (1.8+) or Groovy.
 
 ### The Generated Test Class Contains Appropriate Boilerplate Code
 
@@ -50,9 +50,15 @@ All aspects of the generated test classes are determined by an Apache Velocity t
 Squaretest includes default Velocity templates for both Java and Groovy for the following test frameworks and mocking frameworks.
 
 * JUnit4 with Mockito
+* JUnit4 with Mockito and AssertJ
+* JUnit4 with Spring and Mockito
+* JUnit4 with Spring, Mockito and AssertJ
 * JUnit5 with Mockito
+* JUnit5 with Mockito and AssertJ
+* JUnit5 with Spring and Mockito
+* JUnit5 with Spring, Mockito and AssertJ
 * TestNG with Mockito
-* Robolectric3 with Mockito
+* Robolectric3+ with Mockito
 * AndroidJUnit4 with Mockito
 
 ### Detects Design Patterns in the Source Class
@@ -87,7 +93,7 @@ Squaretest uses default values for certain commonly-used types that you usually 
 
 Squaretest also selects default values based on the libraries present on the test classpath; e.g. dependencies and local fields of type Executor will use MoreExecutors.directExecutor() from Google Guava if it's available on the test classpath.
 
-Similarly, Squaretest also generates doAnswer() statements for dependency interactions that take in Callables or Runnables; these statements invoke the call() or run() methods and return either a CompletableFuture or ListenableFuture (when applicable).
+Similarly, Squaretest also generates doAnswer() statements for dependency interactions that take in Callables or Runnables; these statements invoke the call() or run() methods and return either a CompletableFuture or ListenableFuture when applicable.
 
 ### Configurable Project-Level and Module-Level Settings
 
@@ -96,7 +102,7 @@ Similarly, Squaretest also generates doAnswer() statements for dependency intera
 * Squaretest can configure your [Module Settings](https://squaretest.com/#user_guide_module_settings) automatically in many cases; see [Module Configuration](https://squaretest.com/#user_guide_module_config) for more.
 
 ## Support
-Please feel free track bugs here and post feedback, questions and feature requests to the [forum](https://squaretest.com/#forum).
+Please feel free track bugs here and post feedback, questions and feature requests in the [Discussions](https://github.com/SquaretestLLC/Squaretest/discussions).
 
 ## Terms and Conditions
 By installing and using Squaretest, you agree to the [Terms and Conditions](https://squaretest.com/docs/eula-terms.html).
