@@ -13,7 +13,6 @@ Select **Squaretest | Generate Test - Confirm Options** (Alt+Insert+Generate Tes
 
 ## Create Test Methods
 Select **Squaretest | Generate Test Methods** (Alt+Insert+Generate Test Methods) to see a list of test methods to add to your test class.
-The list includes tests for alternate flows for each source method; e.g. if a source method calls foo.bar(), and bar() can throw an IOException, Squaretest will suggest a method called testMethodName_FooThrowsIOException(); the generated test method will stub foo to throw an IOException when bar() called.
 
 ![Create Test Method Gif](https://github.com/SquaretestLLC/Squaretest/assets/31743679/3b914d62-ff33-48e7-a1aa-a3118889ce56)
 
