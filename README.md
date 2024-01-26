@@ -9,12 +9,12 @@ Squaretest also generates tests for alternate flows.
 ## Create a Test Class for a Java Class
 Select **Squaretest | Generate Test - Confirm Options** (Alt+Insert+Generate Test - Confirm Options) to create a test class for your Java source class.
 
-![Generate Test Gif](https://github.com/SquaretestLLC/Squaretest/assets/31743679/261de96b-ef52-459a-88e5-e795c13a0be2)
+![Create Test Class Gif](images/CreateTestClass.gif)
 
 ## Create Test Methods
 Select **Squaretest | Generate Test Methods** (Alt+Insert+Generate Test Methods) to see a list of test methods to add to your test class.
 
-![Create Test Method Gif](https://github.com/SquaretestLLC/Squaretest/assets/31743679/3b914d62-ff33-48e7-a1aa-a3118889ce56)
+![Create Test Method Gif](images/CreateTestMethod.gif)
 
 ## Features
 
@@ -117,7 +117,8 @@ All templates included with Squaretest have Quick Settings, or variables set at 
 * Use Mockito BDD
 * Use static imports for initMocks and related methods
 * Use mocks for mockable parameters whose names end in listener or callback
-* Use custom initialization expressions for dependencies and test method arguments of certain types. [More...](https://squaretest.com/#template_api_quick_settings)
+* Use custom initialization expressions for dependencies and test method arguments of certain types.
+* [More...](https://squaretest.com/#template_api_quick_settings)
 
 ### Default Values for Common Types
 Squaretest uses default values for commonly-used types that developers don't usually mock; e.g. dependencies and local variables of type List will be set to either Arrays.asList() or List.of() instead of a mock or null. Squaretest recognizes 500+ default types from the JDK and various open source libraries, including.
