@@ -80,7 +80,7 @@ Squaretest includes default Velocity templates for both Java and Groovy for the 
 All templates included with Squaretest detect and handle the following design patterns in the source class.
 * The standard Java component with dependencies provided in the constructor
 * Components with private fields annotated with @Inject, @Autowired or similar annotations
-* Components with package-local fields annotated with @Inject or similar annotations. These are common in Android apps using Dagger or Guice).
+* Components with package-local fields annotated with @Inject or similar annotations. These are common in Android apps using Dagger or Guice.
 * Components with dependencies provided via setter methods.
 * Classes with static factory methods like parse(..) or from(..) but no package-visible constructor; i.e. the sealed abstract class and similar patterns
 * Abstract classes in general
