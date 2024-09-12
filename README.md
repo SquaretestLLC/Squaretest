@@ -3,7 +3,7 @@
 The Squaretest plugin for IntelliJ IDEA allows you to automatically generate unit tests for your Java source classes.
 The generated test classes contain code to construct the instance of the source class (if needed) and initialize the
 dependencies to either mocks or reasonable default values. The test classes include test methods that invoke their corresponding source methods
-and compare the returned values to expected values. The tests also include Mockito stubs; i.e. when(), doAnswer() and verify() statements.
+and compare the returned values to expected values. The tests also include Mockito stubs like when(), doAnswer() and verify() statements.
 Squaretest also generates tests for alternate flows.
 
 ## Create a Test Class for a Java Class
@@ -27,19 +27,19 @@ Squaretest automatically generates the following based on your source class:
 1. Code to construct the source class and initialize its dependencies, when appropriate
 2. A test method for each public and package-local method in the source class, containing
    * Local variables for arguments required by the method
-   * Mockito stubs; i.e. when() and doAnswer() statements
+   * Mockito stubs like when() and doAnswer() statements
    * Code to invoke the method
    * An assertEquals() call or Groovy assertion statement
    * Mockito verify() statements
    * Code to initialize data transfer object (DTO) beans used in the above
 3. Test methods for alternate flows, including cases where:
    * Dependency methods throw exceptions
-   * Dependency methods return either null or absent values; e.g. Optional.absent()
-   * Dependency methods return empty values; e.g. Collections.emptyList()
-   * Dependency methods return failure values; e.g. CompletableFuture.failedFuture(exception)
-   * Dependency methods return broken I/O values; e.g. new BrokenInputStream()
-   * Dependency methods return empty I/O values; e.g. InputStream.nullInputStream()
-   * Method parameters contain broken I/O values; e.g. new BrokenInputStream()
+   * Dependency methods return either null or absent values like Optional.empty()
+   * Dependency methods return empty values like Collections.emptyList()
+   * Dependency methods return failure values like CompletableFuture.failedFuture(..)
+   * Dependency methods return broken I/O values like new BrokenInputStream()
+   * Dependency methods return empty I/O values like InputStream.nullInputStream()
+   * Method parameters contain broken I/O values like new BrokenInputStream()
 
 ### Choose Which Dependencies Should Be Mocked
 Select **Squaretest | Generate Test - Confirm Options** (Alt+Insert+Generate Test - Confirm Options) to choose the following options before creating the test class:
@@ -80,7 +80,7 @@ Squaretest includes default Velocity templates for both Java and Groovy for the 
 All templates included with Squaretest detect and handle the following design patterns in the source class.
 * The standard Java component with dependencies provided in the constructor
 * Components with private fields annotated with @Inject, @Autowired or similar annotations
-* Components with package-local fields annotated with @Inject or similar annotations. These are common in Android apps using Dagger or Guice.
+* Components with package-local fields annotated with @Inject or similar annotations.
 * Components with dependencies provided via setter methods.
 * Classes with static factory methods like parse(..) or from(..) but no package-visible constructor; i.e. the sealed abstract class and similar patterns
 * Abstract classes in general
