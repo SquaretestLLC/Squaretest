@@ -1,0 +1,15 @@
+executorService
+ executorService
+ setExecutorService(<<executorService>>)
+
+foo
+ foo
+ setFoo(<<foo>>)
+
+logger
+ logger
+ setLogger(<<logger>>)
+
+userServiceAdapter
+ userServiceAdapter
+ setUserServiceAdapter(<<userServiceAdapter>>)

@@ -1,0 +1,23 @@
+executorService
+ executorService
+ MyClass(userServiceAdapter, <<executorService>>, foo, logger)
+ init(userServiceAdapter, <<executorService>>, foo, logger)
+ init2(userServiceAdapter, <<executorService>>, foo, logger)
+
+foo
+ foo
+ MyClass(userServiceAdapter, executorService, <<foo>>, logger)
+ init(userServiceAdapter, executorService, <<foo>>, logger)
+ init2(userServiceAdapter, executorService, <<foo>>, logger)
+
+logger
+ logger
+ MyClass(userServiceAdapter, executorService, foo, <<logger>>)
+ init(userServiceAdapter, executorService, foo, <<logger>>)
+ init2(userServiceAdapter, executorService, foo, <<logger>>)
+
+userServiceAdapter
+ userServiceAdapter
+ MyClass(<<userServiceAdapter>>, executorService, foo, logger)
+ init(<<userServiceAdapter>>, executorService, foo, logger)
+ init2(<<userServiceAdapter>>, executorService, foo, logger)

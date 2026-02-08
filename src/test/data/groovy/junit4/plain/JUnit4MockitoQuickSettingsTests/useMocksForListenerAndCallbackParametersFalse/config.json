@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-JUnit4Mockito.groovy",
+  "replacementLines" : [
+      "#set($useMocksForListenerAndCallbackParameters = true)", "#set($useMocksForListenerAndCallbackParameters = false)"
+  ]
+}

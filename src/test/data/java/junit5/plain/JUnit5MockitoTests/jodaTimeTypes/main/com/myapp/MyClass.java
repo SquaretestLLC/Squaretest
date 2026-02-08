@@ -1,0 +1,31 @@
+/*
+ * Copyright 2026 Squaretest LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.myapp;
+
+import org.joda.time.*;
+import org.joda.time.base.*;
+import org.joda.time.chrono.*;
+import org.joda.time.convert.*;
+import org.joda.time.field.*;
+import org.joda.time.format.*;
+import org.joda.time.tz.*;
+
+public class MyClass {
+
+    public void doSomethingWithJodaTimeArgs(final BaseInterval baseInterval1, final BuddhistChronology buddhistChronology1, final EthiopicChronology ethiopicChronology1, final LenientChronology lenientChronology1, final ZonedChronology zonedChronology1, final DurationFieldType durationFieldType1, final DelegatedDurationField delegatedDurationField1, final ZeroIsMaxDateTimeField zeroIsMaxDateTimeField1, final PeriodParser periodParser1, final JodaTimePermission jodaTimePermission1, final MutableInterval mutableInterval1, final ReadableDuration readableDuration1, final ReadWritableInterval readWritableInterval1, final DefaultNameProvider defaultNameProvider1, final Weeks weeks1, final BasePeriod basePeriod1, final AssembledChronology assembledChronology1, final IslamicChronology islamicChronology1, final IntervalConverter intervalConverter1, final DateTimeConstants dateTimeConstants1, final Duration duration1, final DecoratedDateTimeField decoratedDateTimeField1, final LenientDateTimeField lenientDateTimeField1, final ScaledDurationField scaledDurationField1, final DateTimeParser dateTimeParser1, final FormatUtils formatUtils1, final Interval interval1, final LocalDate localDate1, final PeriodType periodType1, final ReadWritablePeriod readWritablePeriod1, final Provider provider1, final ZoneInfoLogger zoneInfoLogger1, final AbstractDateTime abstractDateTime1, final BaseDuration baseDuration1, final GregorianChronology gregorianChronology1, final Chronology chronology1, final DurationConverter durationConverter1, final DateTime dateTime1, final DelegatedDateTimeField delegatedDateTimeField1, final OffsetDateTimeField offsetDateTimeField1, final SkipUndoDateTimeField skipUndoDateTimeField1, final DateTimeFormatter dateTimeFormatter1, final DateTimeParserBucket dateTimeParserBucket1, final Instant instant1, final LocalTime localTime1, final MutableDateTime mutableDateTime1, final ReadableInstant readableInstant1, final Seconds seconds1, final DateTimeZoneBuilder dateTimeZoneBuilder1, final AbstractDuration abstractDuration1, final BaseLocal baseLocal1, final BasePartial basePartial1, final CopticChronology copticChronology1, final ISOChronology isoChronology1, final StrictChronology strictChronology1, final ConverterManager converterManager1, final DateTimeField dateTimeField1, final DateTimeUtils dateTimeUtils1, final AbstractReadableInstantFieldProperty abstractReadableInstantFieldProperty1, final FieldUtils fieldUtils1, final PreciseDurationDateTimeField preciseDurationDateTimeField1, final UnsupportedDateTimeField unsupportedDateTimeField1, final PeriodFormat periodFormat1, final Hours hours1, final ReadableInterval readableInterval1, final ZoneInfoProvider zoneInfoProvider1, final AbstractInstant abstractInstant1, final AbstractConverter abstractConverter1, final InstantConverter instantConverter1, final DateTimeComparator dateTimeComparator1, final DurationField durationField1, final DecoratedDurationField decoratedDurationField1, final MillisDurationField millisDurationField1, final PreciseDateTimeField preciseDateTimeField1, final StrictDateTimeField strictDateTimeField1, final PeriodFormatter periodFormatter1, final IllegalFieldValueException illegalFieldValueException1, final LocalDateTime localDateTime1, final Months months1, final Period period1, final ReadWritableInstant readWritableInstant1, final FixedDateTimeZone fixedDateTimeZone1, final ZoneInfoCompiler zoneInfoCompiler1, final Years years1, final AbstractInterval abstractInterval1, final AbstractPartialFieldProperty abstractPartialFieldProperty1, final DividedDateTimeField dividedDateTimeField1, final DateTimePrinter dateTimePrinter1, final ISODateTimeFormat isoDateTimeFormat1, final PeriodFormatterBuilder periodFormatterBuilder1, final MutablePeriod mutablePeriod1, final ReadablePartial readablePartial1, final TimeOfDay timeOfDay1, final AbstractPartial abstractPartial1, final BaseDateTime baseDateTime1, final BaseSingleFieldPeriod baseSingleFieldPeriod1, final GJChronology gjChronology1, final LimitChronology limitChronology1, final Converter converter1, final PartialConverter partialConverter1, final PeriodConverter periodConverter1, final DateMidnight dateMidnight1, final DateTimeZone dateTimeZone1, final BaseDateTimeField baseDateTimeField1, final PreciseDurationField preciseDurationField1, final UnsupportedDurationField unsupportedDurationField1, final DateTimeFormatterBuilder dateTimeFormatterBuilder1, final PeriodPrinter periodPrinter1, final Partial partial1, final ReadablePeriod readablePeriod1, final NameProvider nameProvider1, final YearMonth yearMonth1, final AbstractPeriod abstractPeriod1, final BaseChronology baseChronology1, final JulianChronology julianChronology1, final DateTimeFieldType dateTimeFieldType1, final Days days1, final BaseDurationField baseDurationField1, final ImpreciseDateTimeField impreciseDateTimeField1, final RemainderDateTimeField remainderDateTimeField1, final SkipDateTimeField skipDateTimeField1, final DateTimeFormat dateTimeFormat1, final ISOPeriodFormat isoPeriodFormat1, final IllegalInstantException illegalInstantException1, final Minutes minutes1, final MonthDay monthDay1, final ReadableDateTime readableDateTime1, final ReadWritableDateTime readWritableDateTime1, final CachedDateTimeZone cachedDateTimeZone1, final UTCProvider utcProvider1, final YearMonthDay yearMonthDay1) {
+        System.out.println(buddhistChronology1);
+    }
+}

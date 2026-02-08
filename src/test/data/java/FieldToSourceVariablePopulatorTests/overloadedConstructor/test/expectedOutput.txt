@@ -1,0 +1,18 @@
+executorService
+ executorService
+ MyClass(userServiceAdapter, <<executorService>>)
+ MyClass(userServiceAdapter, <<executorService>>, logger, foo)
+
+foo
+ foo
+ MyClass(userServiceAdapter, executorService, logger, <<foo>>)
+
+logger
+ logger
+ MyClass(userServiceAdapter, executorService, <<logger>>, foo)
+
+userServiceAdapter
+ userServiceAdapter
+ MyClass(<<userServiceAdapter>>)
+ MyClass(<<userServiceAdapter>>, executorService)
+ MyClass(<<userServiceAdapter>>, executorService, logger, foo)

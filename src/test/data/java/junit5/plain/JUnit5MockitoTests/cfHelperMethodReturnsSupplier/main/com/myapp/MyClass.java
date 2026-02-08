@@ -1,0 +1,101 @@
+/*
+ * Copyright 2026 Squaretest LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.myapp;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.function.Supplier;
+
+public class MyClass {
+    private final ExecutorService executorService;
+    private final OrderService orderService;
+    private final MetricService metricService;
+
+    public MyClass(
+            final ExecutorService executorService,
+            final OrderService orderService, final MetricService metricService) {
+        this.executorService = executorService;
+        this.orderService = orderService;
+        this.metricService = metricService;
+    }
+
+    public Future<Order> getOrderWithId1(final String orderId) throws NetworkException, ServiceException {
+        return CompletableFuture.supplyAsync(getOrderCallable1(orderId), executorService);
+    }
+    public Future<Order> getOrderWithId2(final String orderId) throws NetworkException, ServiceException {
+        return CompletableFuture.supplyAsync(getOrderCallable2(orderId), executorService);
+    }
+    public Future<Order> getOrderWithId3(final String orderId) throws NetworkException, ServiceException {
+        return CompletableFuture.supplyAsync(getOrderCallable3(orderId), executorService);
+    }
+    public Future<Order> getOrderWithId4(final String orderId) throws NetworkException, ServiceException {
+        return CompletableFuture.supplyAsync(getOrderCallable4(orderId), executorService);
+    }
+
+    public Supplier<Order> getOrderCallable1(final String orderId) throws NetworkException, ServiceException {
+        return new Supplier<Order>() {
+            @Override
+            public Order get() {
+                try {
+                    return orderService.getOrderWithId(orderId);
+                } catch (final NetworkException e) {
+                    metricService.recordOrderNetworkException(e);
+                    throw e;
+                } catch (final ServiceException e) {
+                    metricService.recordOrderServiceException(e);
+                    throw e;
+                }
+            }
+        };
+    }
+
+    public Supplier<Order> getOrderCallable2(final String orderId) throws NetworkException, ServiceException {
+        return () -> {
+            try {
+                return orderService.getOrderWithId(orderId);
+            } catch (final NetworkException e) {
+                metricService.recordOrderNetworkException(e);
+                throw e;
+            } catch (final ServiceException e) {
+                metricService.recordOrderServiceException(e);
+                throw e;
+            }
+        };
+    }
+
+    public Supplier<Order> getOrderCallable3(final String orderId) throws NetworkException, ServiceException {
+        return () -> {
+            return getOrderCallableHelper3(orderId);
+        };
+    }
+
+    public Supplier<Order> getOrderCallable4(final String orderId) throws NetworkException, ServiceException {
+        return () -> getOrderCallableHelper3(orderId);
+    }
+
+    private Order getOrderCallableHelper3(final String orderId) {
+        try {
+            return orderService.getOrderWithId(orderId);
+        } catch (final NetworkException e) {
+            metricService.recordOrderNetworkException(e);
+            throw e;
+        } catch (final ServiceException e) {
+            metricService.recordOrderServiceException(e);
+            throw e;
+        }
+    }
+}

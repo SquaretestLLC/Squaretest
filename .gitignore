@@ -1,0 +1,8 @@
+.idea/
+.intellijPlatform/
+out/
+lib/
+*.iml
+*.zip
+.gradle/
+build/

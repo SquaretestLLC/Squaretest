@@ -1,0 +1,72 @@
+MyClass(userServiceAdapter, executorService, logger, foo)
+
+getAllUsersAsync()
+ logger.info(msg)
+  callstack:
+   logger.info("getAllUsersAsync()") in getAllUsersAsync()
+  callstack:
+   logger.info("something else") in getAllUsersAsync()
+  callstack:
+   getAllUsersSync() in getAllUsersAsync()
+    logger.info("getAllUsersSync()") in getAllUsersSync()
+ executorService.submit(task)
+  callstack:
+   executorService.submit(() -> getAllUsersSync()) in getAllUsersAsync()
+ userServiceAdapter.getUsers()
+  callstack:
+   getAllUsersSync() in getAllUsersAsync()
+    this.userServiceAdapter.getUsers() in getAllUsersSync()
+
+getAllUsersSync()
+ logger.info(msg)
+  callstack:
+   logger.info("getAllUsersSync()") in getAllUsersSync()
+ userServiceAdapter.getUsers()
+  callstack:
+   this.userServiceAdapter.getUsers() in getAllUsersSync()
+
+getUserWithIdAsync(userId)
+ logger.info(msg)
+  callstack:
+   logger.info("getUserWithIdAsync()") in getUserWithIdAsync(userId)
+ executorService.submit(task)
+  callstack:
+   executorService.submit(() -> getUserWithIdSync("userId")) in getUserWithIdAsync(userId)
+ userServiceAdapter.getUserWithId(userId)
+  callstack:
+   getUserWithIdSync("userId") in getUserWithIdAsync(userId)
+    userServiceAdapter.getUserWithId("userId") in getUserWithIdSync(userId)
+
+getUserWithIdAsync1(userId)
+ logger.info(msg)
+  callstack:
+   logger.info("getUserWithIdAsync1()") in getUserWithIdAsync1(userId)
+ foo.submit(task)
+  callstack:
+   foo.submit(() -> getUserWithIdSync("userId")) in getUserWithIdAsync1(userId)
+ userServiceAdapter.getUserWithId(userId)
+  callstack:
+   getUserWithIdSync("userId") in getUserWithIdAsync1(userId)
+    userServiceAdapter.getUserWithId("userId") in getUserWithIdSync(userId)
+
+getUserWithIdAsync2(userId)
+ logger.info(msg)
+  callstack:
+   logger.info("getUserWithIdAsync2()") in getUserWithIdAsync2(userId)
+ foo.submit(task)
+  callstack:
+   foo.submit(new Callable<User>() {
+            @Override
+            public User call() {
+                return getUserWithIdSync("userId");
+            }
+        }) in getUserWithIdAsync2(userId)
+ userServiceAdapter.getUserWithId(userId)
+  callstack:
+   getUserWithIdSync("userId") in getUserWithIdAsync2(userId)
+    userServiceAdapter.getUserWithId("userId") in getUserWithIdSync(userId)
+
+getUserWithIdSync(userId)
+ userServiceAdapter.getUserWithId(userId)
+  callstack:
+   userServiceAdapter.getUserWithId("userId") in getUserWithIdSync(userId)

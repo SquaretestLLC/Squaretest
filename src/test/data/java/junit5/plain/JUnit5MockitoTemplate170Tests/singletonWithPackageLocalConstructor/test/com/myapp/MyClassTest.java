@@ -1,0 +1,46 @@
+package com.myapp;
+
+import com.google.common.util.concurrent.MoreExecutors;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.net.SocketImplFactory;
+import java.net.SocketOptions;
+
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private SocketImplFactory mockSocketFactory;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(MoreExecutors.newDirectExecutorService(), mockSocketFactory, 0L);
+    }
+
+    @Test
+    void testCreateNewConnection() {
+        // Setup
+        when(mockSocketFactory.createSocketImpl()).thenReturn(null);
+
+        // Run the test
+        final SocketOptions result = myClassUnderTest.createNewConnection();
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetInstance() {
+        // Setup
+        // Run the test
+        final MyClass result = MyClass.getInstance();
+
+        // Verify the results
+    }
+}

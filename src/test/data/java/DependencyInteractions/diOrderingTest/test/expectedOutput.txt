@@ -1,0 +1,51 @@
+MyClass(fooService)
+
+getBar(fooId)
+ fooService.getFooById(id)
+  callstack:
+   fooService.getFooById(fooId) in getBar(fooId)
+ fooService.getBarById(barId)
+  callstack:
+   fooService.getBarById(fooService.getFooById(fooId).getBarId()) in getBar(fooId)
+
+getBarIdHelper(fooId)
+ fooService.getFooById(id)
+  callstack:
+   fooService.getFooById(fooId) in getBarIdHelper(fooId)
+
+getBarNames(fooId)
+ fooService.getFooById(id)
+  callstack:
+   fooService.getFooById(fooId) in getBarNames(fooId)
+ fooService.getBarById(barId)
+  callstack:
+   fooService.getBarById(fooService.getFooById(fooId).getBarId()) in getBarNames(fooId)
+ fooService.getBarNames(barName)
+  callstack:
+   fooService.getBarNames(fooService.getBarById(fooService.getFooById(fooId).getBarId()).getBarName()) in getBarNames(fooId)
+
+getBarNamesWithHelper(fooId)
+ fooService.getFooById(id)
+  callstack:
+   getBarIdHelper(fooId) in getBarNamesWithHelper(fooId)
+    fooService.getFooById(fooId) in getBarIdHelper(fooId)
+ fooService.getBarById(barId)
+  callstack:
+   fooService.getBarById(getBarIdHelper(fooId)) in getBarNamesWithHelper(fooId)
+ fooService.getBarNames(barName)
+  callstack:
+   fooService.getBarNames(fooService.getBarById(getBarIdHelper(fooId)).getBarName()) in getBarNamesWithHelper(fooId)
+
+getBarWithHelper(fooId)
+ fooService.getFooById(id)
+  callstack:
+   getFooHelper(fooId) in getBarWithHelper(fooId)
+    fooService.getFooById(fooId) in getFooHelper(fooId)
+ fooService.getBarById(barId)
+  callstack:
+   fooService.getBarById(getFooHelper(fooId).getBarId()) in getBarWithHelper(fooId)
+
+getFooHelper(fooId)
+ fooService.getFooById(id)
+  callstack:
+   fooService.getFooById(fooId) in getFooHelper(fooId)

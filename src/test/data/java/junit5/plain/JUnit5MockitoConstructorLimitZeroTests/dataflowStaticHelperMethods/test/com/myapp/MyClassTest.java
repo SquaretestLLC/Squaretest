@@ -1,0 +1,167 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private FooService mockFooService;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockFooService);
+    }
+
+    @Test
+    void testMyClassGetFoo1() {
+        // Setup
+        final ServiceDTO1 expectedResult = new ServiceDTO1("serviceDTO1Id", "serviceDTO1Name",
+                Arrays.asList(new ServiceDTO1.ServiceDTO1Part("ServiceDTO1PartId", "ServiceDTO1PartName")),
+                new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L);
+
+        // Configure FooService.getFoo1(...).
+        final ServiceResponse1 serviceResponse1 = new ServiceResponse1("serviceDTO1Id", "serviceDTO1Name",
+                Arrays.asList(new ServiceResponse1.ServiceResponse1Part("ServiceDTO1PartId", "ServiceDTO1PartName")),
+                new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L);
+        when(mockFooService.getFoo1("myClassGetFoo1Id")).thenReturn(serviceResponse1);
+
+        // Run the test
+        final ServiceDTO1 result = myClassUnderTest.myClassGetFoo1("myClassGetFoo1Id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testMyClassGetFoo2() {
+        // Setup
+        final ServiceDTO2 expectedResult = new ServiceDTO2();
+        expectedResult.setServiceDTO2Id("serviceResponse2Id");
+        expectedResult.setServiceDTO2Name("serviceResponse2Name");
+        final ServiceDTO2.ServiceDTO2Part serviceDTO2Part = new ServiceDTO2.ServiceDTO2Part();
+        serviceDTO2Part.setServiceDTO2PartId("serviceResponse2PartId");
+        serviceDTO2Part.setServiceDTO2PartName("serviceResponse2PartName");
+        expectedResult.setServiceDTO2Parts(Arrays.asList(serviceDTO2Part));
+        expectedResult.setServiceDTO2CreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime());
+        expectedResult.setServiceDTO2LongValue(0L);
+
+        // Configure FooService.getFoo2(...).
+        final ServiceResponse2 serviceResponse2 = new ServiceResponse2("serviceResponse2Id", "serviceResponse2Name",
+                Arrays.asList(new ServiceResponse2.ServiceResponse2Part("serviceResponse2PartId",
+                        "serviceResponse2PartName")), new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L);
+        when(mockFooService.getFoo2("myClassGetFoo2Id")).thenReturn(serviceResponse2);
+
+        // Run the test
+        final ServiceDTO2 result = myClassUnderTest.myClassGetFoo2("myClassGetFoo2Id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testMyClassGetFoo3() {
+        // Setup
+        final ServiceDTO3 expectedResult = new ServiceDTO3();
+        expectedResult.setServiceDTO3Id("serviceResponse3Id");
+        expectedResult.setServiceDTO3Name("serviceResponse3Name");
+        final ServiceDTO3.ServiceDTO3Part serviceDTO3Part = new ServiceDTO3.ServiceDTO3Part();
+        serviceDTO3Part.setServiceDTO3PartId("serviceResponse3PartId");
+        serviceDTO3Part.setServiceDTO3PartName("serviceResponse3PartName");
+        expectedResult.setServiceDTO3Parts(Arrays.asList(serviceDTO3Part));
+        expectedResult.setServiceDTO3CreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime());
+        expectedResult.setServiceDTO3LongValue(0L);
+
+        // Configure FooService.getFoo3(...).
+        final ServiceResponse3 serviceResponse3 = new ServiceResponse3("serviceResponse3Id", "serviceResponse3Name",
+                Arrays.asList(new ServiceResponse3.ServiceResponse3Part("serviceResponse3PartId",
+                        "serviceResponse3PartName")), new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L);
+        when(mockFooService.getFoo3("myClassGetFoo3Id")).thenReturn(serviceResponse3);
+
+        // Run the test
+        final ServiceDTO3 result = myClassUnderTest.myClassGetFoo3("myClassGetFoo3Id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testMyClassGetFoo4() {
+        // Setup
+        final ServiceDTOItem serviceDTOItem = new ServiceDTOItem();
+        serviceDTOItem.setServiceDTOItemId("serviceResponseDataItemId");
+        serviceDTOItem.setServiceDTOItemName("serviceResponseDataItemName");
+        serviceDTOItem.setServiceDTOItemCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime());
+        serviceDTOItem.setServiceDTOItemLongValue(0L);
+        final List<ServiceDTOItem> expectedResult = Arrays.asList(serviceDTOItem);
+
+        // Configure FooService.getFoo4(...).
+        final List<ServiceResponseDataItem> serviceResponseDataItems = Arrays.asList(
+                new ServiceResponseDataItem("serviceResponseDataItemId", "serviceResponseDataItemName",
+                        new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L));
+        when(mockFooService.getFoo4("myClassGetFoo4Id")).thenReturn(serviceResponseDataItems);
+
+        // Run the test
+        final List<ServiceDTOItem> result = myClassUnderTest.myClassGetFoo4("myClassGetFoo4Id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testMyClassGetFoo4_FooServiceReturnsNoItems() {
+        // Setup
+        when(mockFooService.getFoo4("myClassGetFoo4Id")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<ServiceDTOItem> result = myClassUnderTest.myClassGetFoo4("myClassGetFoo4Id");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testMyClassGetFoo5() {
+        // Setup
+        final ServiceDTOItem2 serviceDTOItem2 = new ServiceDTOItem2();
+        serviceDTOItem2.setServiceDTOItem2Id("ServiceDTOItem2Id");
+        serviceDTOItem2.setServiceDTOItem2Name("ServiceDTOItem2Name");
+        serviceDTOItem2.setServiceDTOItem2CreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime());
+        serviceDTOItem2.setServiceDTOItem2LongValue(0L);
+        final List<ServiceDTOItem2> expectedResult = Arrays.asList(serviceDTOItem2);
+
+        // Configure FooService.getFoo5(...).
+        final List<ServiceResponseDataItem2> serviceResponseDataItem2s = Arrays.asList(
+                new ServiceResponseDataItem2("serviceResponseDataItem2Id", "serviceResponseDataItem2Name",
+                        new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime(), 0L));
+        when(mockFooService.getFoo5("myClassGetFoo4Id")).thenReturn(serviceResponseDataItem2s);
+
+        // Run the test
+        final List<ServiceDTOItem2> result = myClassUnderTest.myClassGetFoo5("myClassGetFoo4Id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testMyClassGetFoo5_FooServiceReturnsNoItems() {
+        // Setup
+        when(mockFooService.getFoo5("myClassGetFoo4Id")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<ServiceDTOItem2> result = myClassUnderTest.myClassGetFoo5("myClassGetFoo4Id");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-AndroidJUnit4Mockito.java",
+  "replacementLines" : [
+      "#set($initExpressionOverrides = {'android.content.Context' : 'InstrumentationRegistry.getContext()'})", "#set($initExpressionOverrides = { \"com.myapp.FooService\" : { \"initExpression\" : \"createTestFooService()\", \"importsRequired\" :  [\"import  static com.myapp.helpers.CommonTestHelpers.*;\"], \"shouldStoreInReference\" : false }, \"com.myapp.BarService\" : \"com.myapp.helpers.BarServiceHelpers.createTestBarService()\"})"
+  ]
+}

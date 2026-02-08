@@ -1,0 +1,37 @@
+package com.myapp
+
+import com.myapp.bases.SubFooService
+import groovy.transform.CompileStatic
+import org.testng.annotations.BeforeMethod
+import org.testng.annotations.Test
+
+@CompileStatic
+class MyClassTest {
+
+    private MyClass myClassUnderTest
+
+    @BeforeMethod
+    void setUp() {
+        myClassUnderTest = new MyClass(new SubFooService())
+    }
+
+    @Test
+    void testGetFoo() {
+        // Setup
+        // Run the test
+        def result = myClassUnderTest.getFoo("key")
+
+        // Verify the results
+        assert "result" == result
+    }
+
+    @Test
+    void testGetFoo2() {
+        // Setup
+        // Run the test
+        def result = myClassUnderTest.getFoo2("key")
+
+        // Verify the results
+        assert "result" == result
+    }
+}

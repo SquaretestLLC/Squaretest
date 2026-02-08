@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit4Mockito.java",
+  "replacementLines" : [
+      "#set($useStaticImportForInitMocks = true)", "#set($useStaticImportForInitMocks = false)"
+  ]
+}

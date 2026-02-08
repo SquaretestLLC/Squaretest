@@ -143,5 +143,27 @@ Similarly, Squaretest generates doAnswer() statements for dependency interaction
 ## Support
 Please feel free track bugs here and post feedback, questions and feature requests in the [Discussions](https://github.com/SquaretestLLC/Squaretest/discussions).
 
-## Terms and Conditions
-By installing and using Squaretest, you agree to the [Terms and Conditions](https://squaretest.com/docs/eula-terms.html).
+## Building Squaretest
+Follow the instructions below to build Squaretest from source on Windows 10+.
+
+Enable long paths in git:
+```
+git config --system core.longpaths true
+```
+
+Set the following environment variables in order to run the automated tests:
+* ` JAVA_HOME` - The path to your JDK 17 installation.
+* ` JAVA_11_HOME` - The path to your JDK 11 installation.
+* ` JAVA_17_HOME` - The path to your JDK 17 installation.
+* ` JAVA_21_HOME` - The path to your JDK 21 installation.
+
+Run the following command to build only the plugin.
+```
+./gradlew.bat buildPlugin
+```
+
+Run the following command to build the plugin, run the automated tests and the binary compatibility verifier.<br>
+<b>Warning: this will take a long time to run.<b>
+```
+./gradlew.bat buildAll
+```

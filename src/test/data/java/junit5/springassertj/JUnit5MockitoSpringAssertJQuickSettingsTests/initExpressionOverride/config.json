@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit5MockitoSpringAssertJ.java",
+  "replacementLines" : [
+      "#set($initExpressionOverrides = {})", "#set($initExpressionOverrides = { \"com.myapp.FooService\" : { \"initExpression\" : \"createTestFooService()\", \"importsRequired\" :  [\"import  static com.myapp.helpers.CommonTestHelpers.*;\"], \"shouldStoreInReference\" : false }, \"com.myapp.BarService\" : \"com.myapp.helpers.BarServiceHelpers.createTestBarService()\"})"
+  ]
+}

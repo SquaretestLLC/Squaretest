@@ -1,0 +1,118 @@
+/*
+ * Copyright 2026 Squaretest LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import org.jetbrains.intellij.platform.gradle.tasks.VerifyPluginTask
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij.platform' version '2.1.0'
+}
+repositories {
+    mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
+}
+
+intellijPlatform  {
+    pluginConfiguration {
+        name = 'Squaretest'
+        version = '2.0'
+        ideaVersion {
+            // Prevent the patchPluginXml task from updating the sinceBuild or untilBuild properties.
+            sinceBuild = providers.provider { null }
+            untilBuild = providers.provider { null }
+        }
+    }
+    pluginVerification {
+        failureLevel = EnumSet.of(VerifyPluginTask.FailureLevel.COMPATIBILITY_PROBLEMS, VerifyPluginTask.FailureLevel.INVALID_PLUGIN)
+        ides {
+            ide('IC', '2023.3')
+            ide('IU', '2023.3')
+            ide('IC', '2024.3')
+            ide('IU', '2024.3')
+            ide('IC', '2025.2')
+            ide('IU', '2025.2')
+        }
+    }
+}
+
+dependencies {
+    intellijPlatform {
+        create('IU', '2023.2')
+        bundledPlugins(['com.intellij.java', 'org.intellij.groovy', 'com.intellij.properties', 'com.intellij.velocity', 'org.jetbrains.plugins.yaml'])
+        pluginVerifier()
+        instrumentationTools()
+        testFramework TestFrameworkType.Platform.INSTANCE
+        testFramework TestFrameworkType.Bundled.INSTANCE
+    }
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+    implementation 'commons-io:commons-io:2.20.0'
+    implementation 'org.apache.commons:commons-collections4:4.5.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.20.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.20'
+    implementation 'org.jgrapht:jgrapht-core:1.5.2'
+    // Use a fork of velocity-2.0 that places everything in com.squaretest.org.apache instead of org.apache.
+    // This is needed to avoid breaking both Squaretest and the create-from-template features in the rest of
+    // IntelliJ. Also do not include org.slf4j:slf4j-api (required by velocity-2.0). Including this conflicts with
+    // the version built into IntelliJ and causes runtime errors.
+    implementation files('ExternalDependencyLibs/velocity-engine-core-2.4.1.jar')
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.19.0'
+}
+
+/**
+ * Copy Api.java from the sources to the resources directory.
+ * We need Api.java to be in the resources directory to allow the SquaretestVelocityVariableProvider to provide
+ * variables for the IntelliJ Ultimate Edition Velocity Editor.
+ */
+tasks.register('copyTemplateApiIntoResources', Copy) {
+    from 'src/main/java/com/squaretest/template/api/Api.java'
+    into 'src/main/resources/templateapi'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+runIde {
+    // This is needed to troubleshoot conflicts with the google-java-format plugin.
+    jvmArgs "--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+            "--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+            "--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" ,
+            "--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+            "--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+            "--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+            "-Xmx4g"
+}
+
+// Officially declare this dependency to build with Gradle 8.1.1+.
+processResources.dependsOn(copyTemplateApiIntoResources)
+
+// Create a task that depends on all the tasks needed to build and verify the plugin.
+tasks.register('buildAll') {
+    group = 'build'
+    description = 'Builds the plugin and runs all verification tasks.'
+    dependsOn('build', 'buildPlugin', 'verifyPlugin')
+}

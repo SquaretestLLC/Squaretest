@@ -1,0 +1,89 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.util.List;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private OrderService mockOrderService;
+    @Mock
+    private OrderService mockAltOrderService;
+    @Mock
+    private MetricService mockMetricService;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockOrderService, mockAltOrderService, mockMetricService);
+    }
+
+    @Test
+    void testGetOrder1() {
+        // Setup
+        // Configure OrderService.getOrderWithId1(...).
+        final Order order = new Order("orderId", "description", List.of("value"));
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(order);
+
+        // Configure OrderService.getOrderWithId2(...).
+        final Order order1 = new Order("orderId", "description", List.of("value"));
+        when(mockAltOrderService.getOrderWithId2("orderId")).thenReturn(order1);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder1("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordFillInOrderCalled("orderId");
+    }
+
+    @Test
+    void testGetOrder1_OrderServiceReturnsNull() {
+        // Setup
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(null);
+
+        // Configure OrderService.getOrderWithId2(...).
+        final Order order = new Order("orderId", "description", List.of("value"));
+        when(mockAltOrderService.getOrderWithId2("orderId")).thenReturn(order);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder1("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordFillInOrderCalled("orderId");
+    }
+
+    @Test
+    void testGetOrder2() {
+        // Setup
+        // Configure OrderService.getOrderWithId1(...).
+        final Order order = new Order("orderId", "description", List.of("value"));
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(order);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder2("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordFillInOrderCalled("orderId");
+    }
+
+    @Test
+    void testGetOrder2_OrderServiceReturnsNull() {
+        // Setup
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(null);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder2("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordFillInOrderCalled("orderId");
+    }
+}

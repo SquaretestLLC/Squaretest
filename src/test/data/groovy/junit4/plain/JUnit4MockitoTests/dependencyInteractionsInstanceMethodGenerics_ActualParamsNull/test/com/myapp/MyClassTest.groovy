@@ -1,0 +1,87 @@
+package com.myapp
+
+import com.myapp.other.GenericInstanceMethodFoo
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
+
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.Mockito.verify
+
+@CompileStatic
+@RunWith(MockitoJUnitRunner.class)
+class MyClassTest {
+
+    @Mock
+    private GenericInstanceMethodFoo mockFoo
+
+    private MyClass myClassUnderTest
+
+    @Before
+    void setUp() {
+        myClassUnderTest = new MyClass(mockFoo)
+    }
+
+    @Test
+    void testDoLoadWithVal() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doLoadWithVal("key")
+
+        // Verify the results
+        verify(mockFoo).load("key")
+    }
+
+    @Test
+    void testDoLoadWithClassAndKey() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doLoadWithClassAndKey("key")
+
+        // Verify the results
+        verify(mockFoo).load(String.class, "key")
+    }
+
+    @Test
+    void testDoLoadWithNull() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doLoadWithNull("key")
+
+        // Verify the results
+        verify(mockFoo).load(any(T.class))
+    }
+
+    @Test
+    void testDoSaveWithNull() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doSaveWithNull("obj")
+
+        // Verify the results
+        verify(mockFoo).save(any(T.class))
+    }
+
+    @Test
+    void testDoLoad() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doLoad("key")
+
+        // Verify the results
+        verify(mockFoo).load("key")
+    }
+
+    @Test
+    void testDoSave() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doSave("obj")
+
+        // Verify the results
+        verify(mockFoo).save(any(Object.class))
+    }
+}

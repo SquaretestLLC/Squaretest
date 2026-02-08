@@ -1,0 +1,79 @@
+/*
+ * Copyright 2026 Squaretest LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.myapp;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
+import java.util.Locale;
+
+@Controller
+public class MyClass {
+
+    private final BarService barService;
+    private final MetricsServiceAdapter metricsServiceAdapter;
+
+    public MyClass(final BarService barService, final MetricsServiceAdapter metricsServiceAdapter) {
+        this.barService = barService;
+        this.metricsServiceAdapter = metricsServiceAdapter;
+    }
+
+    @GetMapping("/greeting")
+    public String greeting(final BarBean barBeanFromModel, @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+    }
+
+    @GetMapping("/greeting1")
+    public String greeting1(final Locale locale, @ModelAttribute final BarBean barBeanFromModel, @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        barService.saveBar(barBeanFromModel);
+        metricsServiceAdapter.recordMetric("greeting1");
+        return "greeting";
+    }
+
+    @GetMapping("/greeting2")
+    public String greeting2(final Locale locale, final BarBean barBeanFromModel, @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) throws InvalidBarDataIdException {
+        model.addAttribute("name", name);
+        barService.saveBar(barBeanFromModel);
+        // This should be ignored:
+        barService.getBarDataById(0);
+        metricsServiceAdapter.recordMetric("greeting1");
+        return "greeting";
+    }
+
+    @GetMapping("/greetAll")
+    public String greetAll(final BarBean barBeanFromModel, @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) throws IOException {
+        model.addAttribute("name", name);
+        model.addAttribute("bars", barService.getAllBars());
+        metricsServiceAdapter.recordMetric("greetAll");
+        return "greeting";
+    }
+
+    @ModelAttribute
+    BarBean loadBarForSession(@PathVariable long barId) throws InvalidBarDataIdException {
+        return barService.getBarDataById(barId);
+    }
+
+    public void helperToIgnore() throws InvalidBarDataIdException, NetworkException {
+        barService.deleteBarWithId(0);
+    }
+}

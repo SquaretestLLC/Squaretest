@@ -1,0 +1,113 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.concurrent.Future;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+class MyClassTest {
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        myClassUnderTest = new MyClass();
+    }
+
+    @Test
+    void testGetAllUsersSync() {
+        // Setup
+        // Run the test
+        final List<User> result = myClassUnderTest.getAllUsersSync();
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetAllUsersAsync() {
+        // Setup
+        // Run the test
+        final Future<List<User>> result = myClassUnderTest.getAllUsersAsync();
+
+        // Verify the results
+    }
+
+    @Test
+    void testStoreUserSync() {
+        // Setup
+        final User user = new User();
+
+        // Run the test
+        myClassUnderTest.storeUserSync(user);
+
+        // Verify the results
+    }
+
+    @Test
+    void testStoreUserAsync() {
+        // Setup
+        final User user = new User();
+
+        // Run the test
+        final Future<?> result = myClassUnderTest.storeUserAsync(user);
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetUserWithIdSync() {
+        // Setup
+        // Run the test
+        final User result = myClassUnderTest.getUserWithIdSync("userId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetUserWithIdAsync() {
+        // Setup
+        // Run the test
+        final Future<User> result = myClassUnderTest.getUserWithIdAsync("userId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testDoSomethingThatThrowsSameExceptionAsDep() throws Exception {
+        // Setup
+        // Run the test
+        myClassUnderTest.doSomethingThatThrowsSameExceptionAsDep();
+
+        // Verify the results
+    }
+
+    @Test
+    void testDoSomethingThatThrowsSameExceptionAsDep_ThrowsIOException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> myClassUnderTest.doSomethingThatThrowsSameExceptionAsDep())
+                .isInstanceOf(IOException.class);
+    }
+
+    @Test
+    void testDoSomethingThatThrowsDifferentExceptionThanDep() throws Exception {
+        // Setup
+        // Run the test
+        myClassUnderTest.doSomethingThatThrowsDifferentExceptionThanDep();
+
+        // Verify the results
+    }
+
+    @Test
+    void testDoSomethingThatThrowsDifferentExceptionThanDep_ThrowsSQLException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> myClassUnderTest.doSomethingThatThrowsDifferentExceptionThanDep())
+                .isInstanceOf(SQLException.class);
+    }
+}

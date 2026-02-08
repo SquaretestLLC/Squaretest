@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-JUnit5MockitoSpringAssertJ.groovy",
+  "replacementLines" : [
+      "#set($mockDependencyMemberNamePrefix = \"mock\")", "#set($mockDependencyMemberNamePrefix = \"\")"
+  ]
+}

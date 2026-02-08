@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit5Mockito.java",
+  "replacementLines" : [
+      "#set($generateStubsAndVerifyStatements = true)", "#set($generateStubsAndVerifyStatements = false)"
+  ]
+}

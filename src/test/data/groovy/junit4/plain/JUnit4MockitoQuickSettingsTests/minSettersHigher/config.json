@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-JUnit4Mockito.groovy",
+  "replacementLines" : [
+      "#set($minNumberOfSettersToCall = 5)", "#set($minNumberOfSettersToCall = 70)"
+  ]
+}

@@ -1,0 +1,19 @@
+executorService
+ executorService
+ BaseClass(userServiceAdapter, <<executorService>>, foo, logger)
+ MyClass(userServiceAdapter, <<executorService>>, foo, logger)
+
+foo
+ foo
+ BaseClass(userServiceAdapter, executorService, <<foo>>, logger)
+ MyClass(userServiceAdapter, executorService, <<foo>>, logger)
+
+logger
+ logger
+ BaseClass(userServiceAdapter, executorService, foo, <<logger>>)
+ MyClass(userServiceAdapter, executorService, foo, <<logger>>)
+
+userServiceAdapter
+ userServiceAdapter
+ BaseClass(<<userServiceAdapter>>, executorService, foo, logger)
+ MyClass(<<userServiceAdapter>>, executorService, foo, logger)

@@ -1,0 +1,8 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit4Mockito.java",
+  "replacementLines" : [
+      "private AutoCloseable mockitoCloseable;", "private AutoCloseable mockitoCloseable;\n\t    \n  \n",
+	  "private $param.type.canonicalText $param.testClassMemberName;", "private $param.type.canonicalText $param.testClassMemberName;\r\n\t\n   \n\t          \n",
+	  "#macro(renderEmptyStub $di)", "#macro(renderEmptyStub $di)\n        \n        \n   \r\n"
+  ]
+}

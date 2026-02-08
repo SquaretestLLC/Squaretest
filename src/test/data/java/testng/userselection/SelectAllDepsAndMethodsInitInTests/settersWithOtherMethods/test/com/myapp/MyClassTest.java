@@ -1,0 +1,36 @@
+package com.myapp;
+
+import org.mockito.Mock;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.time.LocalDate;
+
+import static org.mockito.MockitoAnnotations.initMocks;
+import static org.testng.Assert.assertEquals;
+
+public class MyClassTest {
+
+    @Mock
+    private AlphaData mockAlphaData;
+    @Mock
+    private BetaData mockBetaData;
+    @Mock
+    private GammaData mockGammaData;
+
+    @BeforeMethod
+    public void setUp() {
+        initMocks(this);
+    }
+
+    @Test
+    public void testToString() {
+        final MyClass myClassUnderTest = new MyClass();
+        myClassUnderTest.setAlphaData(mockAlphaData);
+        myClassUnderTest.setBetaData(mockBetaData);
+        myClassUnderTest.setGammaData(mockGammaData);
+        myClassUnderTest.setStartDate(LocalDate.of(2020, 1, 1));
+        myClassUnderTest.setSerializedValue("serializedValue");
+        assertEquals("result", myClassUnderTest.toString());
+    }
+}

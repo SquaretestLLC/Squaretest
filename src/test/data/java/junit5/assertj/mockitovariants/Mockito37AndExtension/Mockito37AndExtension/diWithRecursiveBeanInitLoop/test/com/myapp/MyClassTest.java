@@ -1,0 +1,40 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+class MyClassTest {
+
+    @Mock
+    private Foo mockFoo;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        myClassUnderTest = new MyClass(mockFoo);
+    }
+
+    @Test
+    void testMakeBean1() {
+        // Setup
+        // Configure Foo.makeBean1(...).
+        final Bean1 bean1 = new Bean1();
+        bean1.setName("name");
+        final Bean2 bean2 = new Bean2();
+        bean2.setName("name");
+        bean1.setBean2(bean2);
+        when(mockFoo.makeBean1()).thenReturn(bean1);
+
+        // Run the test
+        final Bean1 result = myClassUnderTest.makeBean1();
+
+        // Verify the results
+    }
+}

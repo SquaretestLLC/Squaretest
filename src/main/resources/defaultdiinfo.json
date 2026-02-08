@@ -1,0 +1,2275 @@
+{
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_batchGetItem_BatchGetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_batchGetItem_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_batchGetItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_batchWriteItem_BatchWriteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_batchWriteItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_createBackup_CreateBackupRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.TableNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.TableInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ContinuousBackupsUnavailableException",
+      "com.amazonaws.services.dynamodbv2.model.BackupInUseException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_describeTable_DescribeTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_describeTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_deleteItem_DeleteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_deleteItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_deleteItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_deleteTable_DeleteTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_deleteTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_getItem_GetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_getItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_getItem_String_Map_Boolean": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_listTables_ListTablesRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_listTables": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_listTables_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_listTables_String_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_listTables_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_putItem_PutItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_putItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_putItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_scan_ScanRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_scan_String_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_scan_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_scan_String_List_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_updateItem_UpdateItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_updateItem_String_Map_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_updateItem_String_Map_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_updateTable_UpdateTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDB_updateTable_String_ProvisionedThroughput": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_batchGetItem_BatchGetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_batchGetItem_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_batchGetItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_batchWriteItem_BatchWriteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_batchWriteItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_createBackup_CreateBackupRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.TableNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.TableInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ContinuousBackupsUnavailableException",
+      "com.amazonaws.services.dynamodbv2.model.BackupInUseException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_describeTable_DescribeTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_describeTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_deleteItem_DeleteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_deleteItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_deleteItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_deleteTable_DeleteTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_deleteTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_getItem_GetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_getItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_getItem_String_Map_Boolean": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_listTables_ListTablesRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_listTables": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_listTables_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_listTables_String_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_listTables_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_putItem_PutItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_putItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_putItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_scan_ScanRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_scan_String_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_scan_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_scan_String_List_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_updateItem_UpdateItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_updateItem_String_Map_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_updateItem_String_Map_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_updateTable_UpdateTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient_updateTable_String_ProvisionedThroughput": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_batchGetItem_BatchGetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_batchGetItem_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_batchGetItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_batchWriteItem_BatchWriteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_batchWriteItem_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_createBackup_CreateBackupRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.TableNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.TableInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ContinuousBackupsUnavailableException",
+      "com.amazonaws.services.dynamodbv2.model.BackupInUseException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_describeTable_DescribeTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_describeTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_deleteItem_DeleteItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_deleteItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_deleteItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_deleteTable_DeleteTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_deleteTable_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_getItem_GetItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_getItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_getItem_String_Map_Boolean": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_listTables_ListTablesRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_listTables": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_listTables_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_listTables_String_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_listTables_Integer": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_putItem_PutItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_putItem_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_putItem_String_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_scan_ScanRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_scan_String_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_scan_String_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_scan_String_List_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_updateItem_UpdateItemRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_updateItem_String_Map_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_updateItem_String_Map_Map_String": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException",
+      "com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.ItemCollectionSizeLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.TransactionConflictException",
+      "com.amazonaws.services.dynamodbv2.model.RequestLimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_updateTable_UpdateTableRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.AmazonDynamoDB_updateTable_String_ProvisionedThroughput": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.ResourceInUseException",
+      "com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException",
+      "com.amazonaws.services.dynamodbv2.model.LimitExceededException",
+      "com.amazonaws.services.dynamodbv2.model.InternalServerErrorException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_Class_Object_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_T": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_T_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_Class_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_Class_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_load_Class_Object_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_save_T": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_save_T_DynamoDBSaveExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_save_T_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_save_T_DynamoDBSaveExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_delete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_delete_Object_DynamoDBDeleteExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_delete_Object_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_delete_T_DynamoDBDeleteExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_transactionWrite_TransactionWriteRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_transactionWrite_TransactionWriteRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_transactionLoad_TransactionLoadRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_transactionLoad_TransactionLoadRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchDelete_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchDelete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchSave_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchSave_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchWrite_Iterable_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchWrite_Iterable_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Map_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Map_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_batchLoad_Map_List_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_scan_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_scan_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_scanPage_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_scanPage_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_query_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_query_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_queryPage_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_queryPage_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_count_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_count_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_count_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper_count_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_Class_Object_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_T": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_T_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_Class_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_Class_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_load_Class_Object_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_save_T": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_save_T_DynamoDBSaveExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_save_T_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_save_T_DynamoDBSaveExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_delete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_delete_Object_DynamoDBDeleteExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_delete_Object_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_delete_T_DynamoDBDeleteExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_transactionWrite_TransactionWriteRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_transactionWrite_TransactionWriteRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_transactionLoad_TransactionLoadRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_transactionLoad_TransactionLoadRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchDelete_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchDelete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchSave_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchSave_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchWrite_Iterable_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchWrite_Iterable_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Map_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Map_List_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_batchLoad_Map_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_scan_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_scan_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_scanPage_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_scanPage_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_query_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_query_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_queryPage_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_queryPage_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_count_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_count_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_count_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper_count_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_Class_Object_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_T": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_T_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_Class_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_Class_Object_DynamoDBMapperConfig": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_load_Class_Object_Object": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_save_T": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_save_T_DynamoDBSaveExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_save_T_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_save_T_DynamoDBSaveExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_delete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_delete_Object_DynamoDBDeleteExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_delete_Object_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_delete_T_DynamoDBDeleteExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_transactionWrite_TransactionWriteRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_transactionWrite_TransactionWriteRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_transactionLoad_TransactionLoadRequest": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_transactionLoad_TransactionLoadRequest_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchDelete_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchDelete_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchSave_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchSave_Object": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchWrite_Iterable_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchWrite_Iterable_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Iterable": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Iterable_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Map_List": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Map_List_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Map": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_batchLoad_Map_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_scan_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_scan_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_parallelScan_Class_DynamoDBScanExpression_int_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_scanPage_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_scanPage_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_query_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_query_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_queryPage_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_queryPage_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_count_Class_DynamoDBScanExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_count_Class_DynamoDBScanExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_count_Class_DynamoDBQueryExpression": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper_count_Class_DynamoDBQueryExpression_DynamoDBMapperConfig": {
+    "undeclaredExceptions": [
+      "com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_createTable_CreateTableEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_createTable_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_createTable": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_deleteItem_DeleteItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_deleteItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_deleteItem_Key": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_deleteItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_getItem_GetItemEnhancedRequest": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_getItem_Consumer": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_getItem_Key": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_getItem_T": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_query_QueryEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_query_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_query_QueryConditional": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_putItem_PutItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_putItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_putItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_scan_ScanEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_scan_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_scan": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_updateItem_UpdateItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_updateItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable_updateItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_createTable_CreateTableEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_createTable_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_createTable": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_deleteItem_DeleteItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_deleteItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_deleteItem_Key": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_deleteItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_getItem_GetItemEnhancedRequest": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_getItem_Consumer": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_getItem_Key": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_getItem_T": {
+    "nullabilityStatus": "NULLABLE",
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_query_QueryEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_query_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_query_QueryConditional": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_putItem_PutItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_putItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_putItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_scan_ScanEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_scan_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_scan": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_updateItem_UpdateItemEnhancedRequest": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_updateItem_Consumer": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "software.amazon.awssdk.enhanced.dynamodb.internal.client.DefaultDynamoDbTable_updateItem_T": {
+    "undeclaredExceptions": [
+      "software.amazon.awssdk.core.exception.SdkClientException",
+      "software.amazon.awssdk.services.dynamodb.model.DynamoDbException"
+    ]
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.QueryResultPage_getLastEvaluatedKey": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage_getLastEvaluatedKey": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AmazonS3Client_getResourceUrl_String_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3Encryption_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClient_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionV2_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AmazonS3EncryptionClientV2_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3EncryptionV2_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_copyObject_CopyObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_copyPart_CopyPartRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketCrossOriginConfiguration_GetBucketCrossOriginConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketCrossOriginConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketLifecycleConfiguration_GetBucketLifecycleConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketLifecycleConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketTaggingConfiguration_GetBucketTaggingConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketTaggingConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketWebsiteConfiguration_GetBucketWebsiteConfigurationRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getBucketWebsiteConfiguration_String": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getObject_GetObjectRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getObject_GetObjectRequest_File": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.AbstractAmazonS3_getObject_String_String": {
+    "nullabilityStatus": "NOT_NULL"
+  },
+  "com.amazonaws.services.s3.internal.ObjectExpirationResult_getExpirationTime": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.SSEResultBase_getSSEAlgorithm": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.SSEResultBase_getSSECustomerAlgorithm": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.SSEResultBase_getSSECustomerKeyMd5": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.ServerSideEncryptionResult_getSSEAlgorithm": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.ServerSideEncryptionResult_getSSECustomerAlgorithm": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.internal.ServerSideEncryptionResult_getSSECustomerKeyMd5": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.BucketPolicy_getPolicyText": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.CompleteMultipartUploadResult_getExpirationTime": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.CompleteMultipartUploadResult_getExpirationTimeRuleId": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.CopyObjectResult_getExpirationTime": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.CopyObjectResult_getExpirationTimeRuleId": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.DeleteObjectsResult.DeletedObject_getVersionId": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ListObjectsV2Result_getDelimiter": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ListObjectsV2Result_getEncodingType": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ListObjectsV2Result_getPrefix": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.MultipartUploadListing_getDelimiter": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.MultipartUploadListing_getEncodingType": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.MultipartUploadListing_getPrefix": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ObjectListing_getDelimiter": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ObjectListing_getEncodingType": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ObjectListing_getMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ObjectListing_getNextMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.ObjectListing_getPrefix": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.PartListing_getEncodingType": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.PresignedUrlUploadResult_getContentMd5": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.PutObjectResult_getContentMd5": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.PutObjectResult_getExpirationTime": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.PutObjectResult_getExpirationTimeRuleId": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.S3ObjectSummary_getOwner": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getDelimiter": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getEncodingType": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getKeyMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getNextKeyMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getNextVersionIdMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getPrefix": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.s3.model.VersionListing_getVersionIdMarker": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.simpleemail.AmazonSimpleEmailService_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sns.AmazonSNSClient_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sns.AmazonSNS_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sqs.AmazonSQSClient_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sqs.AmazonSQS_getCachedResponseMetadata_AmazonWebServiceRequest": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sqs.model.ListDeadLetterSourceQueuesResult_getNextToken": {
+    "nullabilityStatus": "NULLABLE"
+  },
+  "com.amazonaws.services.sqs.model.ListQueuesResult_getNextToken": {
+    "nullabilityStatus": "NULLABLE"
+  }
+}

@@ -1,0 +1,30 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class MyClassTest {
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        myClassUnderTest = new MyClass();
+    }
+
+    @Test
+    void testDoSomethingCool() {
+        // Setup
+        // Run the test
+        myClassUnderTest.doSomethingCool();
+
+        // Verify the results
+    }
+
+    @Test
+    void testDoSomethingInC() {
+        assertEquals("result", myClassUnderTest.doSomethingInC());
+    }
+}

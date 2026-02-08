@@ -1,0 +1,130 @@
+<!--
+  ~ Copyright 2026 Squaretest LLC.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<idea-plugin>
+    <id>com.squaretest.Squaretest</id>
+    <name>Squaretest</name>
+    <vendor email="support@squaretest.com" url="https://squaretest.com">Squaretest LLC</vendor>
+    <description><![CDATA[
+<p>
+    Automatically Generate Unit Tests for Java Source Classes.
+</p>
+<p>
+    <b>Create a Test Class</b><br/>
+    Choose <b>Squaretest | Generate Test</b> from the toolbar menu to create a test class for a Java class.
+</p>
+
+<p>
+    <b>Create Test Methods</b><br/>
+    Open a test class and choose <b>Squaretest | Generate Test Methods</b> from the toolbar menu. Then select the test methods you want to create and click OK.
+</p>
+<p>
+    <b>Features</b><br/>
+</p>
+<ul>
+    <li>Automatically generates Java tests using either JUnit4, JUnit5, TestNG, Robolectric3+, AndroidJUnit4 and Mockito.</li>
+    <li>Supports generating tests using Spring MockMVC, AssertJ and Groovy.</li>
+    <li>Supports choosing which dependencies to mock, which methods to test, and how to construct the source class (choose <b>Squaretest | Generate Test - Confirm Options</b>).</li>
+    <li>Generates test methods with when(), verify() and assertEquals(..) calls.</li>
+    <li>Generates code to initialize data transfer objects used in the tests.</li>
+    <li>Creates doAnswer() statements for dependency method calls that take in Callables or Runnables.</li>
+    <li>Creates test methods for alternate flows by stubbing dependency method calls to throw exceptions or return alternate values.</li>
+    <li>All output can be customized by changing the provided Apache Velocity templates.</li>
+    <li>See <a href="https://squaretest.com">squaretest.com</a> for the full list of features.</li>
+</ul>
+<p>
+    <b>Support</b><br/>
+    Please post feedback, questions and feature requests to the <a href="https://squaretest.com#forum">forum</a>.
+</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+          <i>Changes in 2.0:</i>
+          <ul>
+            <li>Make Squaretest free and open source.</li>
+          </ul>
+          <i>Changes in 1.8.16:</i>
+          <ul>
+            <li>Fix compatibility issue in IntelliJ IDEA 2025.3 EAP.</li>
+          </ul>
+          <i>Changes in 1.8.15:</i>
+          <ul>
+            <li>Fix crash in some cases involving Spring path resolution.</li>
+          </ul>
+          <i>Changes in 1.7.14 and 1.8.14:</i>
+          <ul>
+            <li>Use the Spring @WithMockUser annotation in controller tests that require a user.</li>
+            <li>Upgrade the Apache Velocity Engine to version 2.4.1.</li>
+            <li>Minor bug fixes.</li>
+          </ul>
+    ]]>
+    </change-notes>
+
+    <idea-version since-build="232"/>
+    <depends>com.intellij.modules.java</depends>
+    <depends config-file="squaretest-groovy.xml">org.intellij.groovy</depends>
+    <depends optional="true" config-file="squaretest-yaml.xml">org.jetbrains.plugins.yaml</depends>
+    <depends optional="true" config-file="squaretest-velocity.xml">com.intellij.velocity</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable groupId="root" displayName="Squaretest"
+                                 id="preferences.SquaretestSettings"
+                                 instance="com.squaretest.settings.SettingsConfigurable"/>
+        <applicationService serviceInterface="com.squaretest.settings.store.SettingsState"
+                            serviceImplementation="com.squaretest.settings.store.SettingsState"/>
+        <completion.contributor language="JAVA" implementationClass="com.squaretest.completion.JavaCompletionContributor"/>
+    </extensions>
+    <actions>
+        <group id="SquaretestGroup" text="Squaretest" description="Squaretest actions" popup="true">
+            <add-to-group group-id="MainMenu" relative-to-action="HelpMenu" anchor="before"/>
+            <action id="squaretest.action.createnewtest" class="com.squaretest.NewTestGeneratorAction"
+                    text="Generate Test"
+                    icon="/icons/SQIcon.png"
+                    description="Generate test for current class">
+                <keyboard-shortcut first-keystroke="meta shift L" keymap="Mac OS X 10.5+"/>
+                <keyboard-shortcut first-keystroke="meta shift L" keymap="Mac OS X"/>
+                <keyboard-shortcut first-keystroke="control alt K" keymap="$default"/>
+                <add-to-group group-id="GenerateGroup" anchor="last" />
+            </action>
+            <action id="squaretest.action.createnewtestwithaskmode" class="com.squaretest.NewTestGeneratorConfirmMocksAction"
+                    text="Generate Test - Confirm Options"
+                    icon="/icons/SQIcon.png"
+                    description="Generate test for current class">
+                <keyboard-shortcut first-keystroke="meta shift J" keymap="Mac OS X 10.5+"/>
+                <keyboard-shortcut first-keystroke="meta shift J" keymap="Mac OS X"/>
+                <keyboard-shortcut first-keystroke="alt K" keymap="$default"/>
+                <add-to-group group-id="GenerateGroup" anchor="last" />
+            </action>
+            <action id="squaretest.action.createtestmethods" class="com.squaretest.CreateTestMethodsAction"
+                    text="Generate Test Methods"
+                    icon="/icons/SQIcon.png"
+                    description="Generate test methods">
+                <keyboard-shortcut first-keystroke="meta shift m" keymap="Mac OS X 10.5+"/>
+                <keyboard-shortcut first-keystroke="meta shift m" keymap="Mac OS X"/>
+                <keyboard-shortcut first-keystroke="alt m" keymap="$default"/>
+                <add-to-group group-id="GenerateGroup" anchor="first" />
+            </action>
+            <action id="squaretest.action.testmethodhelp" class="com.squaretest.completionhelp.CompletionHelpAction"
+                    text="Help"
+                    icon="/icons/SQIcon.png"
+                    description="Shows how to use Squaretest">
+            </action>
+            <action id="squaretest.action.aboutsquaretest" class="com.squaretest.completionhelp.AboutAction"
+                    text="About"
+                    icon="/icons/SQIcon.png"
+                    description="About Squaretest">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>

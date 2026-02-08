@@ -1,0 +1,76 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private OrderService mockOrderService;
+    @Mock
+    private MetricService mockMetricService;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockOrderService, mockMetricService);
+    }
+
+    @Test
+    void testGetOrder1() {
+        // Setup
+        // Configure OrderService.getOrderWithId1(...).
+        final Optional<Order> order = Optional.of(new Order("orderId", "description"));
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(order);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder1("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordOrPresent("orderId");
+        verify(mockMetricService).recordOutsideIfCheck("orderId");
+    }
+
+    @Test
+    void testGetOrder1_OrderServiceReturnsAbsent() {
+        // Setup
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(Optional.empty());
+
+        // Run the test
+        assertThrows(OrderNotFoundException.class, () -> myClassUnderTest.getOrder1("orderId"));
+    }
+
+    @Test
+    void testGetOrder2() {
+        // Setup
+        // Configure OrderService.getOrderWithId1(...).
+        final Optional<Order> order = Optional.of(new Order("orderId", "description"));
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(order);
+
+        // Run the test
+        final Order result = myClassUnderTest.getOrder2("orderId");
+
+        // Verify the results
+        verify(mockMetricService).recordOrPresent("orderId");
+        verify(mockMetricService).recordOutsideIfCheck("orderId");
+    }
+
+    @Test
+    void testGetOrder2_OrderServiceReturnsAbsent() {
+        // Setup
+        when(mockOrderService.getOrderWithId1("orderId")).thenReturn(Optional.empty());
+
+        // Run the test
+        assertThrows(OrderNotFoundException.class, () -> myClassUnderTest.getOrder2("orderId"));
+    }
+}

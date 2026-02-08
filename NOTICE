@@ -1,0 +1,160 @@
+Squaretest
+
+Copyright 2026 Squaretest LLC
+
+This product includes software developed at Squaretest (https://squaretest.com)
+Licensed under the Apache License, Version 2.0.
+------------------------------------------------------------------------------------------------------------------
+Third-Party Library Attributions Are Listed Below
+------------------------------------------------------------------------------------------------------------------
+Apache Commons Lang
+Copyright 2001-2025 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (https://www.apache.org/).
+------------------------------------------------------------------------------------------------------------------
+Apache Commons IO
+Copyright 2002-2025 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (https://www.apache.org/).
+------------------------------------------------------------------------------------------------------------------
+Apache Commons Collections
+
+Copyright 2001-2025 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (https://www.apache.org/).
+------------------------------------------------------------------------------------------------------------------
+Jackson Core
+
+Jackson is a high-performance, Free/Open Source JSON processing library.
+It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+been in development since 2007.
+It is currently developed by a community of developers.
+
+## Copyright
+
+Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+
+## Licensing
+
+Jackson 3.x core and extension components are licensed under Apache License 2.0
+To find the details that apply to this artifact see the accompanying LICENSE file.
+
+## Credits
+
+A list of contributors may be found from CREDITS file, which is included
+in some artifacts (usually source distributions); but is always available
+from the source code management (SCM) system project uses.
+
+## FastDoubleParser
+
+jackson-core bundles a shaded copy of FastDoubleParser <https://github.com/wrandelshofer/FastDoubleParser>.
+That code is available under an MIT license <https://github.com/wrandelshofer/FastDoubleParser/blob/main/LICENSE>
+under the following copyright.
+
+Copyright © 2023 Werner Randelshofer, Switzerland. MIT License.
+
+See FastDoubleParser-NOTICE for details of other source code included in FastDoubleParser
+and the licenses and copyrights that apply to that code.
+------------------------------------------------------------------------------------------------------------------
+Jackson Databind
+# Jackson JSON processor
+
+Jackson is a high-performance, Free/Open Source JSON processing library.
+It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+been in development since 2007.
+It is currently developed by a community of developers.
+
+## Copyright
+
+Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+
+## Licensing
+
+Jackson 3.x core and extension components are licensed under Apache License 2.0
+To find the details that apply to this artifact see the accompanying LICENSE file.
+
+## Credits
+
+A list of contributors may be found from CREDITS file, which is included
+in some artifacts (usually source distributions); but is always available
+from the source code management (SCM) system project uses.
+------------------------------------------------------------------------------------------------------------------
+Jackson Annotations
+# Jackson JSON processor
+
+Jackson is a high-performance, Free/Open Source JSON processing library.
+It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+been in development since 2007.
+It is currently developed by a community of developers.
+
+## Copyright
+
+Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+
+## Licensing
+
+Jackson 2.x core and extension components are licensed under Apache License 2.0
+To find the details that apply to this artifact see the accompanying LICENSE file.
+
+## Credits
+
+A list of contributors may be found from CREDITS(-2.x) file, which is included
+in some artifacts (usually source distributions); but is always available
+from the source code management (SCM) system project uses.
+------------------------------------------------------------------------------------------------------------------
+JGraphT (https://github.com/jgrapht/jgrapht)
+Licensed under the Eclipse Public License (EPL) https://www.eclipse.org/legal/epl-2.0/
+------------------------------------------------------------------------------------------------------------------
+Apfloat (https://github.com/mtommila/apfloat)
+MIT License
+
+Copyright (c) 2025 Mikko Tommila
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+------------------------------------------------------------------------------------------------------------------
+JHeaps (https://github.com/d-michail/jheaps)
+Licensed under the Apache License, Version 2.0.
+------------------------------------------------------------------------------------------------------------------
+Apache Velocity
+
+Squaretest LLC made the following modifications to the Apache Velocity source code:
+the contents of the Java package: "org.apache.velocity" were moved to "com.squaretest.org.apache.velocity" to avoid dependency conflicts with the Velocity Engine included with IntelliJ IDEA.
+These changes are Copyright (C) 2026 Squaretest LLC and may be used in accordance with the Apache License, Version 2.0.
+The original NOTICE file for Apache Velocity is included below.
+
+Apache Velocity
+
+Copyright (C) 2000-2007 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+The files
+ - velocity-engine-scripting/src/main/java/org/apache/velocity/script/VelocityScriptEngine.java
+ - velocity-engine-scripting/src/main/java/org/apache/velocity/script/VelocityScriptEngineFactory.java
+are Copyright 2006 Sun Microsystems, Inc., and licenced under a BSD-like licence.
+------------------------------------------------------------------------------------------------------------------
+Consulo Apache Velocity (https://github.com/consulo/consulo-apache-velocity)
+Squaretest LLC made the following modifications to the Consulo Apache Velocity code:
+the Velocity lexer, token type classes and syntax highlighter are included in Squaretest and were modified to meet the requirements and coding style of Squaretest.
+These changes are Copyright (C) 2026 Squaretest LLC and may be used in accordance with the Apache License, Version 2.0.
+------------------------------------------------------------------------------------------------------------------

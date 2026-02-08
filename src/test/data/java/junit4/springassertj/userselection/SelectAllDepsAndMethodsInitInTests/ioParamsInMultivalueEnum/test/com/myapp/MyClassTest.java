@@ -1,0 +1,277 @@
+package com.myapp;
+
+import org.junit.Test;
+
+import java.io.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+public class MyClassTest {
+
+    @Test
+    public void testParseInputStream() throws Exception {
+        assertThat(MyClass.INSTANCE1.parseInputStream(new ByteArrayInputStream("content".getBytes())))
+                .isEqualTo(new JsonDto());
+        assertThat(MyClass.INSTANCE2.parseInputStream(new ByteArrayInputStream("content".getBytes())))
+                .isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testParseReader() throws Exception {
+        assertThat(MyClass.INSTANCE1.parseReader(new StringReader("content"))).isEqualTo(new JsonDto());
+        assertThat(MyClass.INSTANCE2.parseReader(new StringReader("content"))).isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testSafeParseInputStream1() {
+        assertThat(MyClass.INSTANCE1.safeParseInputStream(new ByteArrayInputStream("content".getBytes())))
+                .isEqualTo(new JsonDto());
+        assertThat(MyClass.INSTANCE2.safeParseInputStream(new ByteArrayInputStream("content".getBytes())))
+                .isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testSafeParseReader1() {
+        assertThat(MyClass.INSTANCE1.safeParseReader(new StringReader("content"))).isEqualTo(new JsonDto());
+        assertThat(MyClass.INSTANCE2.safeParseReader(new StringReader("content"))).isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testSafeParseInputStream2() {
+        assertThat(
+                MyClass.INSTANCE1.safeParseInputStream(new ByteArrayInputStream("content".getBytes()), 0L))
+                .isEqualTo(new JsonDto());
+        assertThat(
+                MyClass.INSTANCE2.safeParseInputStream(new ByteArrayInputStream("content".getBytes()), 0L))
+                .isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testSafeParseReader2() {
+        assertThat(MyClass.INSTANCE1.safeParseReader(new StringReader("content"), 0L)).isEqualTo(new JsonDto());
+        assertThat(MyClass.INSTANCE2.safeParseReader(new StringReader("content"), 0L)).isEqualTo(new JsonDto());
+    }
+
+    @Test
+    public void testWriteToOs() throws Exception {
+        // Setup
+        final JsonDto jsonDto = new JsonDto();
+        jsonDto.setName("name");
+        jsonDto.setDisplayName("displayName");
+        jsonDto.setId(0L);
+
+        final OutputStream outputStream = new ByteArrayOutputStream();
+
+        // Run the test
+        MyClass.INSTANCE1.writeToOs(jsonDto, outputStream);
+        MyClass.INSTANCE2.writeToOs(jsonDto, outputStream);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testWriteToWriter() throws Exception {
+        // Setup
+        final JsonDto jsonDto = new JsonDto();
+        jsonDto.setName("name");
+        jsonDto.setDisplayName("displayName");
+        jsonDto.setId(0L);
+
+        final Writer writer = new StringWriter();
+
+        // Run the test
+        MyClass.INSTANCE1.writeToWriter(jsonDto, writer);
+        MyClass.INSTANCE2.writeToWriter(jsonDto, writer);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSafeWriteToOs() {
+        // Setup
+        final JsonDto jsonDto = new JsonDto();
+        jsonDto.setName("name");
+        jsonDto.setDisplayName("displayName");
+        jsonDto.setId(0L);
+
+        final OutputStream outputStream = new ByteArrayOutputStream();
+
+        // Run the test
+        MyClass.INSTANCE1.safeWriteToOs(jsonDto, outputStream);
+        MyClass.INSTANCE2.safeWriteToOs(jsonDto, outputStream);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSafeWriteToWriter() {
+        // Setup
+        final JsonDto jsonDto = new JsonDto();
+        jsonDto.setName("name");
+        jsonDto.setDisplayName("displayName");
+        jsonDto.setId(0L);
+
+        final Writer writer = new StringWriter();
+
+        // Run the test
+        MyClass.INSTANCE1.safeWriteToWriter(jsonDto, writer);
+        MyClass.INSTANCE2.safeWriteToWriter(jsonDto, writer);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCopy() throws Exception {
+        // Setup
+        final InputStream input = new ByteArrayInputStream("content".getBytes());
+        final OutputStream output = new ByteArrayOutputStream();
+
+        // Run the test
+        final int result = MyClass.copy(input, output);
+
+        // Verify the results
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testCopy_EmptyInput() throws Exception {
+        // Setup
+        final InputStream input = new ByteArrayInputStream(new byte[]{});
+        final OutputStream output = new ByteArrayOutputStream();
+
+        // Run the test
+        final int result = MyClass.copy(input, output);
+
+        // Verify the results
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testCopy_BrokenInput() {
+        // Setup
+        final InputStream input = new InputStream() {
+            private final IOException exception = new IOException("Error");
+
+            @Override
+            public int read() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public int available() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public long skip(final long n) throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public synchronized void reset() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw exception;
+            }
+        };
+        final OutputStream output = new ByteArrayOutputStream();
+
+        // Run the test
+        assertThatThrownBy(() -> MyClass.copy(input, output)).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testCopy_BrokenOutput() {
+        // Setup
+        final InputStream input = new ByteArrayInputStream("content".getBytes());
+        final OutputStream output = new OutputStream() {
+
+            private final IOException exception = new IOException("Error");
+
+            @Override
+            public void write(final int b) throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public void flush() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw exception;
+            }
+        };
+
+        // Run the test
+        assertThatThrownBy(() -> MyClass.copy(input, output)).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testName() {
+        assertThat(MyClass.INSTANCE1.name()).isEqualTo("name");
+        assertThat(MyClass.INSTANCE2.name()).isEqualTo("name");
+    }
+
+    @Test
+    public void testOrdinal() {
+        assertThat(MyClass.INSTANCE1.ordinal()).isEqualTo(0);
+        assertThat(MyClass.INSTANCE2.ordinal()).isEqualTo(0);
+    }
+
+    @Test
+    public void testToString() {
+        assertThat(MyClass.INSTANCE1.toString()).isEqualTo("name");
+        assertThat(MyClass.INSTANCE2.toString()).isEqualTo("name");
+    }
+
+    @Test
+    public void testEquals() {
+        assertThat(MyClass.INSTANCE1.equals("other")).isFalse();
+        assertThat(MyClass.INSTANCE2.equals("other")).isFalse();
+    }
+
+    @Test
+    public void testHashCode() {
+        assertThat(MyClass.INSTANCE1.hashCode()).isEqualTo(0);
+        assertThat(MyClass.INSTANCE2.hashCode()).isEqualTo(0);
+    }
+
+    @Test
+    public void testCompareTo() {
+        assertThat(MyClass.INSTANCE1.compareTo(MyClass.INSTANCE1)).isEqualTo(0);
+        assertThat(MyClass.INSTANCE2.compareTo(MyClass.INSTANCE1)).isEqualTo(0);
+    }
+
+    @Test
+    public void testCompareTo_ThrowsNullPointerException() {
+        assertThatThrownBy(() -> MyClass.INSTANCE1.compareTo(MyClass.INSTANCE1))
+                .isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> MyClass.INSTANCE2.compareTo(MyClass.INSTANCE1))
+                .isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    public void testCompareTo_ThrowsClassCastException() {
+        assertThatThrownBy(() -> MyClass.INSTANCE1.compareTo(MyClass.INSTANCE1)).isInstanceOf(ClassCastException.class);
+        assertThatThrownBy(() -> MyClass.INSTANCE2.compareTo(MyClass.INSTANCE1)).isInstanceOf(ClassCastException.class);
+    }
+
+    @Test
+    public void testGetDeclaringClass() {
+        assertThat(MyClass.INSTANCE1.getDeclaringClass()).isEqualTo(MyClass.class);
+        assertThat(MyClass.INSTANCE2.getDeclaringClass()).isEqualTo(MyClass.class);
+    }
+
+    @Test
+    public void testValueOf() {
+        assertThat(Enum.valueOf(MyClass.class, "name")).isEqualTo(MyClass.INSTANCE1);
+        assertThatThrownBy(() -> Enum.valueOf(MyClass.class, "name")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Enum.valueOf(MyClass.class, "name")).isInstanceOf(NullPointerException.class);
+    }
+}

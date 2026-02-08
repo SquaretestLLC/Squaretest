@@ -1,0 +1,118 @@
+package com.myapp
+
+import groovy.transform.CompileStatic
+import org.junit.Test
+
+import java.time.LocalDate
+
+import static org.assertj.core.api.Assertions.assertThat
+
+@CompileStatic
+class MyClassTest {
+
+    @Test
+    void testAlphaDataGetterAndSetter() {
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+        def alphaData1 = new AlphaData()
+        myClassUnderTest.setAlphaData(alphaData1)
+        assertThat(myClassUnderTest.getAlphaData()).isEqualTo(alphaData1)
+    }
+
+    @Test
+    void testGetTheAlphaString() {
+        // Setup
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+
+        // Run the test
+        def result = myClassUnderTest.getTheAlphaString()
+
+        // Verify the results
+        assertThat(result).isEqualTo("result")
+    }
+
+    @Test
+    void testBetaDataGetterAndSetter() {
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+        def betaData1 = new BetaData()
+        myClassUnderTest.setBetaData(betaData1)
+        assertThat(myClassUnderTest.getBetaData()).isEqualTo(betaData1)
+    }
+
+    @Test
+    void testGetTheBetaString() {
+        // Setup
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+
+        // Run the test
+        def result = myClassUnderTest.getTheBetaString()
+
+        // Verify the results
+        assertThat(result).isEqualTo("result")
+    }
+
+    @Test
+    void testGammaDataGetterAndSetter() {
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+        def gammaData = new GammaData()
+        myClassUnderTest.setGammaData(gammaData)
+        assertThat(myClassUnderTest.getGammaData()).isEqualTo(gammaData)
+    }
+
+    @Test
+    void testStartDateGetterAndSetter() {
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+        def startDate = LocalDate.of(2020, 1, 1)
+        myClassUnderTest.setStartDate(startDate)
+        assertThat(myClassUnderTest.getStartDate()).isEqualTo(startDate)
+    }
+
+    @Test
+    void testSerializedValueGetterAndSetter() {
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        def myClassUnderTest = new MyClass(alphaData, betaData)
+        def serializedValue = "serializedValue"
+        myClassUnderTest.setSerializedValue(serializedValue)
+        assertThat(myClassUnderTest.getSerializedValue()).isEqualTo(serializedValue)
+    }
+}

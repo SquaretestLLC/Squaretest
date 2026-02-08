@@ -1,0 +1,26 @@
+package com.myapp;
+
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.time.LocalDate;
+
+import static org.junit.Assert.assertEquals;
+
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+public class MyClassTest {
+
+    @Test
+    public void testToString() {
+        final MyClass myClassUnderTest = new MyClass();
+        myClassUnderTest.setAlphaData(new AlphaData());
+        myClassUnderTest.setBetaData(new BetaData());
+        myClassUnderTest.setGammaData(new GammaData());
+        myClassUnderTest.setStartDate(LocalDate.of(2020, 1, 1));
+        myClassUnderTest.setSerializedValue("serializedValue");
+        assertEquals("result", myClassUnderTest.toString());
+    }
+}

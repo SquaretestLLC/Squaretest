@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-JUnit4Mockito.groovy",
+  "replacementLines" : [
+      "#set($useStaticImportForInitMocks = true)", "#set($useStaticImportForInitMocks = false)"
+  ]
+}

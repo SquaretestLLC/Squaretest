@@ -1,0 +1,178 @@
+package com.myapp
+
+
+import android.support.test.filters.SmallTest
+import android.support.test.runner.AndroidJUnit4
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.springframework.test.util.ReflectionTestUtils
+
+import static org.junit.Assert.assertNull
+import static org.mockito.Mockito.when
+import static org.mockito.MockitoAnnotations.initMocks
+
+@CompileStatic
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+class MyClassTest {
+
+    @Mock
+    private FooService theMockFooService
+    @Mock
+    private BarService theMockBarService
+    @Mock
+    private GammaService theMockGammaService
+    @Mock
+    private BetaService theMockBetaService
+    @Mock
+    private DeltaService theMockDeltaService
+    @Mock
+    private Map<String, String> theMockSpecialMap
+    @Mock
+    private AlphaService theMockAlphaService
+
+    private MyClass myClass
+
+    @Before
+    void setUp() {
+        initMocks(this)
+        myClass = new MyClass(theMockFooService, theMockBarService, theMockGammaService, "defaultBarId")
+        myClass.setDeltaService(theMockDeltaService)
+        ReflectionTestUtils.setField(myClass, "specialMap", theMockSpecialMap)
+        ReflectionTestUtils.setField(myClass, "alphaService", theMockAlphaService)
+        myClass.betaService = theMockBetaService
+    }
+
+    @Test
+    void testGetFooAndBar11() {
+        // Setup
+        // Configure FooService.getFoo1(...).
+        def fooData = new FooData()
+        fooData.setId("id")
+        fooData.setName("name")
+        when(theMockFooService.getFoo1("id")).thenReturn(fooData)
+
+        // Configure BarService.getDefaultBar1(...).
+        def barData = new BarData()
+        barData.setId("id")
+        barData.setName("name")
+        when(theMockBarService.getDefaultBar1("defaultBarId")).thenReturn(barData)
+
+        // Run the test
+        def result = myClass.getFooAndBar1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetAlpha11() {
+        // Setup
+        // Configure AlphaService.getAlpha1(...).
+        def alphaData = new AlphaData()
+        alphaData.setId("id")
+        alphaData.setName("name")
+        when(theMockAlphaService.getAlpha1("id")).thenReturn(alphaData)
+
+        // Run the test
+        def result = myClass.getAlpha1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetBeta11() {
+        // Setup
+        // Configure BetaService.getBeta1(...).
+        def betaData = new BetaData()
+        betaData.setId("id")
+        betaData.setName("name")
+        when(theMockBetaService.getBeta1("id")).thenReturn(betaData)
+
+        // Run the test
+        def result = myClass.getBeta1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetGamma11() {
+        // Setup
+        // Configure GammaService.getGamma1(...).
+        def gammaData = new GammaData()
+        gammaData.setId("id")
+        gammaData.setName("name")
+        when(theMockGammaService.getGamma1("id")).thenReturn(gammaData)
+
+        // Run the test
+        def result = myClass.getGamma1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetGamma21() {
+        // Setup
+        when(theMockSpecialMap.get("GammaId")).thenReturn("id")
+
+        // Configure GammaService.getGamma1(...).
+        def gammaData = new GammaData()
+        gammaData.setId("id")
+        gammaData.setName("name")
+        when(theMockGammaService.getGamma1("id")).thenReturn(gammaData)
+
+        // Run the test
+        def result = myClass.getGamma2()
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetGamma2_MapReturnsNull1() {
+        // Setup
+        when(theMockSpecialMap.get("GammaId")).thenReturn(null)
+
+        // Run the test
+        def result = myClass.getGamma2()
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test
+    void testGetEpsilon11() {
+        // Setup
+        // Run the test
+        def result = MyClass.getEpsilon1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetZetaData11() {
+        // Setup
+        // Run the test
+        def result = MyClass.getZetaData1("id")
+
+        // Verify the results
+    }
+
+    @Test
+    void testSetFooService() {
+        def fooService = null
+        myClass.setFooService(fooService)
+    }
+
+    @Test
+    void testSetEpsilonService1() {
+        // Setup
+        def epsilonService = null
+
+        // Run the test
+        MyClass.setEpsilonService(epsilonService)
+
+        // Verify the results
+    }
+}

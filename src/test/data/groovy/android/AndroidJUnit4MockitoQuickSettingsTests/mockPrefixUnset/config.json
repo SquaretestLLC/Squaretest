@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-AndroidJUnit4Mockito.groovy",
+  "replacementLines" : [
+      "#set($mockDependencyMemberNamePrefix = \"mock\")", "#set($mockDependencyMemberNamePrefix = \"\")"
+  ]
+}

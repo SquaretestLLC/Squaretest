@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-TestNGMockito.groovy",
+  "replacementLines" : [
+      "#set($mockDependencyMemberNamePrefix = \"mock\")", "#set($mockDependencyMemberNamePrefix = \"\")"
+  ]
+}

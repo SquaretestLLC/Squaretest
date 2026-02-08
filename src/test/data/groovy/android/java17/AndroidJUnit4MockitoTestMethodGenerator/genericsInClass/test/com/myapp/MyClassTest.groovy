@@ -1,0 +1,43 @@
+package com.myapp
+
+
+import android.support.test.filters.SmallTest
+import android.support.test.runner.AndroidJUnit4
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import static org.junit.Assert.assertNull
+
+@CompileStatic
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+class MyClassTest {
+
+    private MyClass<String> myClassUnderTest
+
+    @Before
+    void setUp() {
+        myClassUnderTest = new MyClass<>()
+    }
+
+    @Test
+    void testGetSomething1() {
+        assertNull(myClassUnderTest.getSomething())
+    }
+
+    @Test
+    void testPutSomething1() {
+        // Setup
+        // Run the test
+        myClassUnderTest.putSomething("thingToPut")
+
+        // Verify the results
+    }
+
+    @Test
+    void testCountSomethings1() {
+        assert 0 == myClassUnderTest.countSomethings()
+    }
+}

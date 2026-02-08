@@ -1,0 +1,100 @@
+package com.myapp;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+
+import java.util.Arrays;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
+
+public class MyClassTest {
+
+    @Mock
+    private FooCreator mockFooCreator;
+
+    private MyClass myClassUnderTest;
+
+    private AutoCloseable mockitoCloseable;
+
+    @Before
+    public void setUp() {
+        mockitoCloseable = openMocks(this);
+        myClassUnderTest = new MyClass(mockFooCreator);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        mockitoCloseable.close();
+    }
+
+    @Test
+    public void testSendRequest() {
+        // Setup
+        // Configure FooCreator.submitRequest(...).
+        final ResponseBean responseBean = new ResponseBean();
+        responseBean.setResponseId("responseId");
+        final Bean123 bean123 = new Bean123();
+        bean123.setId("id");
+        bean123.setName("name");
+        responseBean.setPrimaryBeans(Arrays.asList(bean123));
+        final Bean123 bean1231 = new Bean123();
+        bean1231.setId("id");
+        bean1231.setName("name");
+        responseBean.setSecondaryBeans(Arrays.asList(bean1231));
+        when(mockFooCreator.submitRequest()).thenReturn(responseBean);
+
+        // Run the test
+        final ResponseBean result = myClassUnderTest.sendRequest("params");
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSendDifferentRequest() {
+        // Setup
+        // Configure FooCreator.submitRequest2(...).
+        final ResponseBean responseBean = new ResponseBean();
+        responseBean.setResponseId("responseId");
+        final Bean123 bean123 = new Bean123();
+        bean123.setId("id");
+        bean123.setName("name");
+        responseBean.setPrimaryBeans(Arrays.asList(bean123));
+        final Bean123 bean1231 = new Bean123();
+        bean1231.setId("id");
+        bean1231.setName("name");
+        responseBean.setSecondaryBeans(Arrays.asList(bean1231));
+        when(mockFooCreator.submitRequest2()).thenReturn(responseBean);
+
+        // Run the test
+        final ResponseBean result = myClassUnderTest.sendDifferentRequest("params");
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSendBothRequests() {
+        // Setup
+        // Configure FooCreator.submitRequest2(...).
+        final ResponseBean responseBean = new ResponseBean();
+        responseBean.setResponseId("responseId");
+        final Bean123 bean123 = new Bean123();
+        bean123.setId("id");
+        bean123.setName("name");
+        responseBean.setPrimaryBeans(Arrays.asList(bean123));
+        final Bean123 bean1231 = new Bean123();
+        bean1231.setId("id");
+        bean1231.setName("name");
+        responseBean.setSecondaryBeans(Arrays.asList(bean1231));
+        when(mockFooCreator.submitRequest2()).thenReturn(responseBean);
+
+        // Run the test
+        final ResponseBean result = myClassUnderTest.sendBothRequests("params");
+
+        // Verify the results
+        verify(mockFooCreator).submitRequest();
+    }
+}

@@ -1,0 +1,24 @@
+MyClass(userServiceAdapter, executorService, logger, foo)
+
+getUsers()
+ logger.info(msg)
+  callstack:
+   logger.info("testing recursion") in getUsers()
+ logger.warning(msg)
+  callstack:
+   getUsersRecursive() in getUsers()
+    logger.warning("testing other recursion method") in getUsersRecursive()
+
+getUsersRecursive()
+ logger.warning(msg)
+  callstack:
+   logger.warning("testing other recursion method") in getUsersRecursive()
+ logger.info(msg)
+  callstack:
+   getUsers() in getUsersRecursive()
+    logger.info("testing recursion") in getUsers()
+
+logSomethingFine()
+ logger.fine(msg)
+  callstack:
+   logger.fine("this is fine") in logSomethingFine()

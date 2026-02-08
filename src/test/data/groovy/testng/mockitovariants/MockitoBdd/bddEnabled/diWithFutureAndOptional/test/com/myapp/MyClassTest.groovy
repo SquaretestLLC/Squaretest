@@ -1,0 +1,77 @@
+package com.myapp
+
+import groovy.transform.CompileStatic
+import io.reactivex.Observable
+import org.mockito.Mock
+import org.testng.annotations.BeforeMethod
+import org.testng.annotations.Test
+
+import static org.mockito.BDDMockito.given
+import static org.mockito.BDDMockito.then
+import static org.mockito.MockitoAnnotations.initMocks
+
+@CompileStatic
+class MyClassTest {
+
+    @Mock
+    private Foo mockFoo
+
+    private MyClass myClassUnderTest
+
+    @BeforeMethod
+    void setUp() {
+        initMocks(this)
+        myClassUnderTest = new MyClass(mockFoo)
+    }
+
+    @Test
+    void testDoSomething() {
+        // Setup
+        given(mockFoo.capWithOptional("theStr")).willReturn(Optional.of(new InnerFoo("myStr")))
+        given(mockFoo.capWithObservable("theStr")).willReturn(Observable.just(new InnerFoo("myStr")))
+
+        // Run the test
+        myClassUnderTest.doSomething()
+
+        // Verify the results
+        then(mockFoo).should().capWithFuture("theStr")
+        then(mockFoo).should().capWithCompletable("theStr")
+    }
+
+    @Test(expectedExceptions = [NoSuchElementException.class])
+    void testDoSomething_FooCapWithOptionalReturnsAbsent() {
+        // Setup
+        given(mockFoo.capWithOptional("theStr")).willReturn(Optional.empty())
+
+        // Run the test
+        myClassUnderTest.doSomething()
+    }
+
+    @Test
+    void testDoSomething_FooCapWithObservableReturnsNoItem() {
+        // Setup
+        given(mockFoo.capWithOptional("theStr")).willReturn(Optional.of(new InnerFoo("myStr")))
+        given(mockFoo.capWithObservable("theStr")).willReturn(Observable.empty())
+
+        // Run the test
+        myClassUnderTest.doSomething()
+
+        // Verify the results
+        then(mockFoo).should().capWithFuture("theStr")
+        then(mockFoo).should().capWithCompletable("theStr")
+    }
+
+    @Test
+    void testDoSomething_FooCapWithObservableReturnsError() {
+        // Setup
+        given(mockFoo.capWithOptional("theStr")).willReturn(Optional.of(new InnerFoo("myStr")))
+        given(mockFoo.capWithObservable("theStr")).willReturn(Observable.error(new Exception("message")))
+
+        // Run the test
+        myClassUnderTest.doSomething()
+
+        // Verify the results
+        then(mockFoo).should().capWithFuture("theStr")
+        then(mockFoo).should().capWithCompletable("theStr")
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit4MockitoSpring.java",
+  "replacementLines" : [
+      "#set($shouldUseMockitoBdd = false)", "#set($shouldUseMockitoBdd = true)"
+  ]
+}

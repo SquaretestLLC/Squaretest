@@ -1,0 +1,793 @@
+package com.myapp;
+
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.SdkClientException;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
+import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.myapp.metrics.MetricAdapter;
+import com.myapp.metrics.MetricEvent;
+import com.myapp.orders.LicenseType;
+import com.myapp.orders.StoredOrder;
+import com.myapp.other.FooService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private DynamoDBMapper mockDynamoDBMapper;
+    @Mock
+    private AmazonS3Client mockS3Client;
+    @Mock
+    private MetricAdapter mockMetricAdapter;
+    @Mock
+    private FooService mockFooService;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockDynamoDBMapper, mockS3Client, "bucketName", mockMetricAdapter,
+                mockFooService);
+    }
+
+    @Test
+    void testGetTheNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenReturn("result");
+
+        // Run the test
+        final Object result = myClassUnderTest.getTheNull();
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetTheNull_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenReturn(null);
+
+        // Run the test
+        final Object result = myClassUnderTest.getTheNull();
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetTheNull_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class, () -> myClassUnderTest.getTheNull());
+    }
+
+    @Test
+    void testGetOrder() throws Exception {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+
+        // Configure AmazonS3Client.getObject(...).
+        final S3Object spyS3Object = spy(new S3Object());
+        spyS3Object.setBucketName("bucketName");
+        spyS3Object.setKey("key");
+        spyS3Object.setObjectContent(new ByteArrayInputStream("content".getBytes()));
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(spyS3Object).close();
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrder_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(null);
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+    }
+
+    @Test
+    void testGetOrder_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsNull() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsNoContent() throws Exception {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+
+        // Configure AmazonS3Client.getObject(...).
+        final S3Object spyS3Object = spy(new S3Object());
+        spyS3Object.setBucketName("bucketName");
+        spyS3Object.setKey("key");
+        spyS3Object.setObjectContent(new ByteArrayInputStream(new byte[]{}));
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(spyS3Object).close();
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsBrokenIo() throws Exception {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+
+        // Configure AmazonS3Client.getObject(...).
+        final S3Object spyS3Object = spy(new S3Object());
+        spyS3Object.setBucketName("bucketName");
+        spyS3Object.setKey("key");
+        spyS3Object.setObjectContent(new InputStream() {
+            private final IOException exception = new IOException("Error");
+
+            @Override
+            public int read() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public int available() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public long skip(final long n) throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public synchronized void reset() throws IOException {
+                throw exception;
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw exception;
+            }
+        });
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(spyS3Object).close();
+        verify(mockMetricAdapter).recordIOException("purchaseId");
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientThrowsSdkClientException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenThrow(SdkClientException.class);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(mockMetricAdapter).recordSDKClientException("purchaseId");
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientThrowsAmazonServiceException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder);
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator");
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenThrow(AmazonServiceException.class);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrder("orderId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success);
+        verify(mockMetricAdapter).recordAmazonServiceException("purchaseId");
+        verify(mockMetricAdapter).recordFinallyBlock("purchaseId");
+    }
+
+    @Test
+    void testGetOrderWithExistingOrder() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(new StoredOrder())).thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithExistingOrder(order);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithExistingOrder_DynamoDBMapperReturnsNull() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        when(mockDynamoDBMapper.load(new StoredOrder())).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithExistingOrder(order);
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithExistingOrder_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        when(mockDynamoDBMapper.load(new StoredOrder())).thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class, () -> myClassUnderTest.getOrderWithExistingOrder(order));
+    }
+
+    @Test
+    void testGetOrderWithExistingOrderAndConfig() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(new StoredOrder(), DynamoDBMapperConfig.DEFAULT)).thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithExistingOrderAndConfig(order);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithExistingOrderAndConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        when(mockDynamoDBMapper.load(new StoredOrder(), DynamoDBMapperConfig.DEFAULT)).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithExistingOrderAndConfig(order);
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithExistingOrderAndConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        final StoredOrder order = new StoredOrder();
+        order.setPurchaseId("purchaseId");
+        order.setNameOnTheLicense("nameOnTheLicense");
+        order.setLicenseType(LicenseType.SQT1_IND);
+        order.setNumberOfUsers(0);
+        order.setDeliveryEmailAddress("deliveryEmailAddress");
+        order.setLicenseText("licenseText");
+        order.setCreator("creator");
+        order.setNotes("notes");
+        order.setLoanDocumentS3Path("loanDocumentS3Path");
+        order.setLoanDocumentText("loanDocumentText");
+
+        when(mockDynamoDBMapper.load(new StoredOrder(), DynamoDBMapperConfig.DEFAULT))
+                .thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class, () -> myClassUnderTest.getOrderWithExistingOrderAndConfig(order));
+    }
+
+    @Test
+    void testGetOrderWithConfig() {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT))
+                .thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithConfig("orderId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT)).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithConfig("orderId");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT))
+                .thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class, () -> myClassUnderTest.getOrderWithConfig("orderId"));
+    }
+
+    @Test
+    void testGetOrderWithRangeKey() {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue")).thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithRangeKey_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue")).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithRangeKey_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue"))
+                .thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class,
+                () -> myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue"));
+    }
+
+    @Test
+    void testGetOrderWithRangeKeyAndConfig() {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithRangeKeyAndConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithRangeKeyAndConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class,
+                () -> myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue"));
+    }
+
+    @Test
+    void testGetOrderWithWeirdGenerics() {
+        // Setup
+        final StoredOrder expectedResult = new StoredOrder();
+        expectedResult.setPurchaseId("purchaseId");
+        expectedResult.setNameOnTheLicense("nameOnTheLicense");
+        expectedResult.setLicenseType(LicenseType.SQT1_IND);
+        expectedResult.setNumberOfUsers(0);
+        expectedResult.setDeliveryEmailAddress("deliveryEmailAddress");
+        expectedResult.setLicenseText("licenseText");
+        expectedResult.setCreator("creator");
+        expectedResult.setNotes("notes");
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path");
+        expectedResult.setLoanDocumentText("loanDocumentText");
+
+        // Configure DynamoDBMapper.load(...).
+        final StoredOrder storedOrder = new StoredOrder();
+        storedOrder.setPurchaseId("purchaseId");
+        storedOrder.setNameOnTheLicense("nameOnTheLicense");
+        storedOrder.setLicenseType(LicenseType.SQT1_IND);
+        storedOrder.setNumberOfUsers(0);
+        storedOrder.setDeliveryEmailAddress("deliveryEmailAddress");
+        storedOrder.setLicenseText("licenseText");
+        storedOrder.setCreator("creator");
+        storedOrder.setNotes("notes");
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path");
+        storedOrder.setLoanDocumentText("loanDocumentText");
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenReturn(storedOrder);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithWeirdGenerics("orderId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testGetOrderWithWeirdGenerics_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenReturn(null);
+
+        // Run the test
+        final StoredOrder result = myClassUnderTest.getOrderWithWeirdGenerics("orderId");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testGetOrderWithWeirdGenerics_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenThrow(AmazonDynamoDBException.class);
+
+        // Run the test
+        assertThrows(AmazonDynamoDBException.class, () -> myClassUnderTest.getOrderWithWeirdGenerics("orderId"));
+    }
+}

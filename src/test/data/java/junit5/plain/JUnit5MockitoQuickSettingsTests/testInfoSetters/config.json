@@ -1,0 +1,6 @@
+{
+  "internalTemplateName": "SQTJ-JUnit5Mockito.java",
+  "replacementLines": [
+    "#macro(renderTestMethod $testInfo)", "#macro(renderTestMethod $testInfo) \n      #set($BigKey = 'MyBigKey')\n    #set($altFoo = $TestInfo.newValue())\n    #set($altFoo[$BigKey] = 'MyValue')\n    #set($altFoo.otherKey = 'otherValue')\n    // altFoo[MyKey] = $altFoo[$BigKey] (should be MyValue)\n    // altFoo[otherKey] = $altFoo.otherKey (should be otherValue)\n    // altFoo[otherKey] = $altFoo['otherKey'] (should be otherValue)"
+  ]
+}

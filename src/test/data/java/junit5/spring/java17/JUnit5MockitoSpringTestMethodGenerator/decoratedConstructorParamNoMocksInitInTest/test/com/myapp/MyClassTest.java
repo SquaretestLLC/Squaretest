@@ -1,0 +1,17 @@
+package com.myapp;
+
+import org.junit.jupiter.api.Test;
+
+class MyClassTest {
+
+    @Test
+    void testGetFoo11() {
+        // Setup
+        final MyClass myClassUnderTest = new MyClass(null);
+
+        // Run the test
+        final FooData result = myClassUnderTest.getFoo1("id");
+
+        // Verify the results
+    }
+}

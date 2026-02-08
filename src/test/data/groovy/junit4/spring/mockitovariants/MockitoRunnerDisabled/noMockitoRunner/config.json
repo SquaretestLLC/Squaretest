@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-JUnit4MockitoSpring.groovy",
+  "replacementLines" : [
+      "#set($shouldUseMockitoExtension = $ClassUtils.isInTestClasspath('org.mockito.runners.MockitoJUnitRunner') || $ClassUtils.isInTestClasspath('org.mockito.junit.MockitoJUnitRunner') || !$ClassUtils.isInTestClasspath('org.mockito.Mockito'))", "#set($shouldUseMockitoExtension = false)"
+  ]
+}

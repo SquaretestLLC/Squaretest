@@ -1,0 +1,691 @@
+package com.myapp
+
+import com.amazonaws.AmazonServiceException
+import com.amazonaws.SdkClientException
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig
+import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException
+import com.amazonaws.services.s3.AmazonS3Client
+import com.amazonaws.services.s3.model.GetObjectRequest
+import com.amazonaws.services.s3.model.S3Object
+import com.myapp.metrics.MetricAdapter
+import com.myapp.metrics.MetricEvent
+import com.myapp.orders.StoredOrder
+import com.myapp.other.FooService
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.robolectric.RobolectricTestRunner
+
+import static org.junit.Assert.assertNull
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.Mockito.*
+import static org.mockito.MockitoAnnotations.initMocks
+
+@CompileStatic
+@RunWith(RobolectricTestRunner.class)
+class MyClassTest {
+
+    @Mock
+    private DynamoDBMapper mockDynamoDBMapper
+    @Mock
+    private AmazonS3Client mockS3Client
+    @Mock
+    private MetricAdapter mockMetricAdapter
+    @Mock
+    private FooService mockFooService
+
+    private MyClass myClassUnderTest
+
+    @Before
+    void setUp() {
+        initMocks(this)
+        myClassUnderTest = new MyClass(mockDynamoDBMapper, mockS3Client, "bucketName", mockMetricAdapter,
+                mockFooService)
+    }
+
+    @Test
+    void testGetTheNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenReturn("result")
+
+        // Run the test
+        def result = myClassUnderTest.getTheNull()
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetTheNull_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getTheNull()
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetTheNull_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(any(T.class))).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getTheNull()
+    }
+
+    @Test
+    void testGetOrder() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+
+        // Configure AmazonS3Client.getObject(...).
+        def spyS3Object = spy(new S3Object())
+        spyS3Object.setBucketName("bucketName")
+        spyS3Object.setKey("key")
+        spyS3Object.setObjectContent(new ByteArrayInputStream("content".getBytes()))
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assert expectedResult == result
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+        verify(spyS3Object).close()
+    }
+
+    @Test
+    void testGetOrder_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(null)
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+    }
+
+    @Test
+    void testGetOrder_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsNull() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsNoContent() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+
+        // Configure AmazonS3Client.getObject(...).
+        def spyS3Object = spy(new S3Object())
+        spyS3Object.setBucketName("bucketName")
+        spyS3Object.setKey("key")
+        spyS3Object.setObjectContent(new ByteArrayInputStream(new byte[]{}))
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assert expectedResult == result
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+        verify(spyS3Object).close()
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientReturnsBrokenIo() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+
+        // Configure AmazonS3Client.getObject(...).
+        def spyS3Object = spy(new S3Object())
+        spyS3Object.setBucketName("bucketName")
+        spyS3Object.setKey("key")
+        spyS3Object.setObjectContent(new InputStream() {
+            private final IOException exception = new IOException("Error")
+
+            @Override
+            public int read() throws IOException {
+                throw exception
+            }
+
+            @Override
+            public int available() throws IOException {
+                throw exception
+            }
+
+            @Override
+            public long skip(final long n) throws IOException {
+                throw exception
+            }
+
+            @Override
+            public synchronized void reset() throws IOException {
+                throw exception
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw exception
+            }
+        })
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenReturn(spyS3Object)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+        verify(spyS3Object).close()
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientThrowsSdkClientException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenThrow(SdkClientException.class)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+    }
+
+    @Test
+    void testGetOrder_AmazonS3ClientThrowsAmazonServiceException() {
+        // Setup
+        when(mockFooService.activateBar("computeCodeForOrder")).thenReturn("hashKey")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "hashKey")).thenReturn(storedOrder)
+
+        when(mockFooService.doSomething("purchaseId")).thenReturn("creator")
+        when(mockS3Client.getObject(new GetObjectRequest("bucketName", "key"))).thenThrow(AmazonServiceException.class)
+
+        // Run the test
+        def result = myClassUnderTest.getOrder("orderId")
+
+        // Verify the results
+        assertNull(result)
+        verify(mockMetricAdapter).recordEvent(MetricEvent.Success)
+    }
+
+    @Test
+    void testGetOrderWithExistingOrder() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject)).thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithExistingOrder(order)
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithExistingOrder_DynamoDBMapperReturnsNull() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject)).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithExistingOrder(order)
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithExistingOrder_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject)).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithExistingOrder(order)
+    }
+
+    @Test
+    void testGetOrderWithExistingOrderAndConfig() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject, DynamoDBMapperConfig.DEFAULT)).thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithExistingOrderAndConfig(order)
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithExistingOrderAndConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject, DynamoDBMapperConfig.DEFAULT)).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithExistingOrderAndConfig(order)
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithExistingOrderAndConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        def order = new StoredOrder()
+        order.setPurchaseId("purchaseId")
+        order.setNameOnTheLicense("nameOnTheLicense")
+        order.setCreator("creator")
+        order.setLoanDocumentS3Path("loanDocumentS3Path")
+        order.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def keyObject = new StoredOrder()
+        keyObject.setPurchaseId("purchaseId")
+        keyObject.setNameOnTheLicense("nameOnTheLicense")
+        keyObject.setCreator("creator")
+        keyObject.setLoanDocumentS3Path("loanDocumentS3Path")
+        keyObject.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(keyObject, DynamoDBMapperConfig.DEFAULT)).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithExistingOrderAndConfig(order)
+    }
+
+    @Test
+    void testGetOrderWithConfig() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT))
+                .thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithConfig("orderId")
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT)).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithConfig("orderId")
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", DynamoDBMapperConfig.DEFAULT))
+                .thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithConfig("orderId")
+    }
+
+    @Test
+    void testGetOrderWithRangeKey() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue")).thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue")
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithRangeKey_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue")).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue")
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithRangeKey_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue"))
+                .thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithRangeKey("orderId", "rangeKeyValue")
+    }
+
+    @Test
+    void testGetOrderWithRangeKeyAndConfig() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue")
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithRangeKeyAndConfig_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue")
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithRangeKeyAndConfig_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId", "rangeKeyValue",
+                DynamoDBMapperConfig.DEFAULT)).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithRangeKeyAndConfig("orderId", "rangeKeyValue")
+    }
+
+    @Test
+    void testGetOrderWithWeirdGenerics() {
+        // Setup
+        def expectedResult = new StoredOrder()
+        expectedResult.setPurchaseId("purchaseId")
+        expectedResult.setNameOnTheLicense("nameOnTheLicense")
+        expectedResult.setCreator("creator")
+        expectedResult.setLoanDocumentS3Path("loanDocumentS3Path")
+        expectedResult.setLoanDocumentText("loanDocumentText")
+
+        // Configure DynamoDBMapper.load(...).
+        def storedOrder = new StoredOrder()
+        storedOrder.setPurchaseId("purchaseId")
+        storedOrder.setNameOnTheLicense("nameOnTheLicense")
+        storedOrder.setCreator("creator")
+        storedOrder.setLoanDocumentS3Path("loanDocumentS3Path")
+        storedOrder.setLoanDocumentText("loanDocumentText")
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenReturn(storedOrder)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithWeirdGenerics("orderId")
+
+        // Verify the results
+        assert expectedResult == result
+    }
+
+    @Test
+    void testGetOrderWithWeirdGenerics_DynamoDBMapperReturnsNull() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenReturn(null)
+
+        // Run the test
+        def result = myClassUnderTest.getOrderWithWeirdGenerics("orderId")
+
+        // Verify the results
+        assertNull(result)
+    }
+
+    @Test(expected = AmazonDynamoDBException.class)
+    void testGetOrderWithWeirdGenerics_DynamoDBMapperThrowsAmazonDynamoDBException() {
+        // Setup
+        when(mockDynamoDBMapper.load(StoredOrder.class, "orderId")).thenThrow(AmazonDynamoDBException.class)
+
+        // Run the test
+        myClassUnderTest.getOrderWithWeirdGenerics("orderId")
+    }
+}

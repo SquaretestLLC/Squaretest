@@ -1,0 +1,355 @@
+package com.myapp;
+
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.apache.commons.lang3.mutable.MutableObject;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+public class MyClassTest {
+
+    @Test
+    public void testCreateNewConnection1() throws Exception {
+        assertThat(MyClass.PRIMARY.createNewConnection()).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.createNewConnection()).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection1_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.createNewConnection()).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.createNewConnection()).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testTryCreateNewConnection1() throws Exception {
+        assertThat(MyClass.PRIMARY.tryCreateNewConnection()).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.tryCreateNewConnection()).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testTryCreateNewConnection1_ThrowsRuntimeException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.tryCreateNewConnection()).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.tryCreateNewConnection()).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void testSafeCreateNewConnection1() throws Exception {
+        assertThat(MyClass.PRIMARY.safeCreateNewConnection()).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.safeCreateNewConnection()).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection2() throws Exception {
+        assertThat(MyClass.PRIMARY.createNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.createNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection2_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.createNewConnection("host", 0)).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.createNewConnection("host", 0)).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testTryCreateNewConnection2() throws Exception {
+        assertThat(MyClass.PRIMARY.tryCreateNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.tryCreateNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testTryCreateNewConnection2_ThrowsRuntimeException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.tryCreateNewConnection("host", 0))
+                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.tryCreateNewConnection("host", 0))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void testSafeCreateNewConnection2() throws Exception {
+        assertThat(MyClass.PRIMARY.safeCreateNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.safeCreateNewConnection("host", 0)).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection3() throws Exception {
+        assertThat(MyClass.PRIMARY.createNewConnection("host", new MutableInt(0))).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.createNewConnection("host", new MutableInt(0))).isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection3_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.createNewConnection("host", new MutableInt(0)))
+                .isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.createNewConnection("host", new MutableInt(0)))
+                .isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testTryCreateNewConnection3() throws Exception {
+        assertThat(MyClass.PRIMARY.tryCreateNewConnection("host", new MutableInt(0))).isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.tryCreateNewConnection("host", new MutableInt(0)))
+                .isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testTryCreateNewConnection3_ThrowsRuntimeException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.tryCreateNewConnection("host", new MutableInt(0)))
+                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.tryCreateNewConnection("host", new MutableInt(0)))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void testSafeCreateNewConnection3() throws Exception {
+        assertThat(MyClass.PRIMARY.safeCreateNewConnection("host", new MutableInt(0)))
+                .isEqualTo(new Socket("host", 80));
+        assertThat(MyClass.SECONDARY.safeCreateNewConnection("host", new MutableInt(0)))
+                .isEqualTo(new Socket("host", 80));
+    }
+
+    @Test
+    public void testCreateNewConnection4() throws Exception {
+        // Setup
+        final MutableObject<Socket> outSocket = new MutableObject<>(new Socket("host", 80));
+
+        // Run the test
+        MyClass.PRIMARY.createNewConnection("host", outSocket);
+        MyClass.SECONDARY.createNewConnection("host", outSocket);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCreateNewConnection4_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.createNewConnection("host",
+                new MutableObject<>(new Socket("host", 80)))).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.createNewConnection("host",
+                new MutableObject<>(new Socket("host", 80)))).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testTryCreateNewConnection4() throws Exception {
+        // Setup
+        final MutableObject<Socket> outSocket = new MutableObject<>(new Socket("host", 80));
+
+        // Run the test
+        MyClass.PRIMARY.tryCreateNewConnection("host", outSocket);
+        MyClass.SECONDARY.tryCreateNewConnection("host", outSocket);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testTryCreateNewConnection4_ThrowsRuntimeException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.tryCreateNewConnection("host",
+                new MutableObject<>(new Socket("host", 80)))).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.tryCreateNewConnection("host",
+                new MutableObject<>(new Socket("host", 80)))).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void testSafeCreateNewConnection4() throws Exception {
+        // Setup
+        final MutableObject<Socket> outSocket = new MutableObject<>(new Socket("host", 80));
+
+        // Run the test
+        MyClass.PRIMARY.safeCreateNewConnection("host", outSocket);
+        MyClass.SECONDARY.safeCreateNewConnection("host", outSocket);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseAllConnections1() throws Exception {
+        // Run the test
+        MyClass.PRIMARY.closeAllConnections();
+        MyClass.SECONDARY.closeAllConnections();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseAllConnections1_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.closeAllConnections()).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.closeAllConnections()).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testSafeCloseAllConnections1() {
+        // Run the test
+        MyClass.PRIMARY.safeCloseAllConnections();
+        MyClass.SECONDARY.safeCloseAllConnections();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseAllConnections2() throws Exception {
+        // Setup
+        final List<MutableObject<Socket>> socketsToClose = Arrays.asList(new MutableObject<>(new Socket("host", 80)));
+
+        // Run the test
+        MyClass.PRIMARY.closeAllConnections(socketsToClose);
+        MyClass.SECONDARY.closeAllConnections(socketsToClose);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseAllConnections2_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.closeAllConnections(
+                Arrays.asList(new MutableObject<>(new Socket("host", 80))))).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.closeAllConnections(
+                Arrays.asList(new MutableObject<>(new Socket("host", 80))))).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testSafeCloseAllConnections2() throws Exception {
+        // Setup
+        final List<MutableObject<Socket>> socketsToClose = Arrays.asList(new MutableObject<>(new Socket("host", 80)));
+
+        // Run the test
+        MyClass.PRIMARY.safeCloseAllConnections(socketsToClose);
+        MyClass.SECONDARY.safeCloseAllConnections(socketsToClose);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseConnections() throws Exception {
+        // Run the test
+        MyClass.PRIMARY.closeConnections("host");
+        MyClass.SECONDARY.closeConnections("host");
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCloseConnections_ThrowsIOException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.closeConnections("host")).isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.closeConnections("host")).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testSafeCloseConnections() {
+        // Run the test
+        MyClass.PRIMARY.safeCloseConnections("host");
+        MyClass.SECONDARY.safeCloseConnections("host");
+
+        // Verify the results
+    }
+
+    @Test
+    public void testGetPrimary() {
+        assertThat(MyClass.getPrimary()).isEqualTo(MyClass.PRIMARY);
+    }
+
+    @Test
+    public void testSafeGetHostConnectionCount1() {
+        assertThat(MyClass.safeGetHostConnectionCount("host")).isEqualTo(0L);
+    }
+
+    @Test
+    public void testGetHostConnectionCount1() throws Exception {
+        assertThat(MyClass.getHostConnectionCount("host")).isEqualTo(0L);
+    }
+
+    @Test
+    public void testSafeGetHostConnectionCount2() {
+        // Setup
+        final MutableLong out = new MutableLong(0L);
+
+        // Run the test
+        MyClass.safeGetHostConnectionCount("host", out);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testGetHostConnectionCount2() throws Exception {
+        // Setup
+        final MutableLong out = new MutableLong(0L);
+
+        // Run the test
+        MyClass.getHostConnectionCount("host", out);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testGetHostConnectionCount2_ThrowsIOException() {
+        // Setup
+        final MutableLong out = new MutableLong(0L);
+
+        // Run the test
+        assertThatThrownBy(() -> MyClass.getHostConnectionCount("host", out)).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    public void testName() {
+        assertThat(MyClass.PRIMARY.name()).isEqualTo("name");
+        assertThat(MyClass.SECONDARY.name()).isEqualTo("name");
+    }
+
+    @Test
+    public void testOrdinal() {
+        assertThat(MyClass.PRIMARY.ordinal()).isEqualTo(0);
+        assertThat(MyClass.SECONDARY.ordinal()).isEqualTo(0);
+    }
+
+    @Test
+    public void testToString() {
+        assertThat(MyClass.PRIMARY.toString()).isEqualTo("name");
+        assertThat(MyClass.SECONDARY.toString()).isEqualTo("name");
+    }
+
+    @Test
+    public void testEquals() {
+        assertThat(MyClass.PRIMARY.equals("other")).isFalse();
+        assertThat(MyClass.SECONDARY.equals("other")).isFalse();
+    }
+
+    @Test
+    public void testHashCode() {
+        assertThat(MyClass.PRIMARY.hashCode()).isEqualTo(0);
+        assertThat(MyClass.SECONDARY.hashCode()).isEqualTo(0);
+    }
+
+    @Test
+    public void testCompareTo() {
+        assertThat(MyClass.PRIMARY.compareTo(MyClass.PRIMARY)).isEqualTo(0);
+        assertThat(MyClass.SECONDARY.compareTo(MyClass.PRIMARY)).isEqualTo(0);
+    }
+
+    @Test
+    public void testCompareTo_ThrowsNullPointerException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.compareTo(MyClass.PRIMARY)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.compareTo(MyClass.PRIMARY)).isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    public void testCompareTo_ThrowsClassCastException() {
+        assertThatThrownBy(() -> MyClass.PRIMARY.compareTo(MyClass.PRIMARY)).isInstanceOf(ClassCastException.class);
+        assertThatThrownBy(() -> MyClass.SECONDARY.compareTo(MyClass.PRIMARY)).isInstanceOf(ClassCastException.class);
+    }
+
+    @Test
+    public void testGetDeclaringClass() {
+        assertThat(MyClass.PRIMARY.getDeclaringClass()).isEqualTo(MyClass.class);
+        assertThat(MyClass.SECONDARY.getDeclaringClass()).isEqualTo(MyClass.class);
+    }
+
+    @Test
+    public void testValueOf() {
+        assertThat(Enum.valueOf(MyClass.class, "name")).isEqualTo(MyClass.PRIMARY);
+        assertThatThrownBy(() -> Enum.valueOf(MyClass.class, "name")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Enum.valueOf(MyClass.class, "name")).isInstanceOf(NullPointerException.class);
+    }
+}

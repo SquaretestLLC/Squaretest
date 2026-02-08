@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTG-TestNGMockito.groovy",
+  "replacementLines" : [
+      "#set($shouldUseMockitoBdd = false)", "#set($shouldUseMockitoBdd = true)"
+  ]
+}

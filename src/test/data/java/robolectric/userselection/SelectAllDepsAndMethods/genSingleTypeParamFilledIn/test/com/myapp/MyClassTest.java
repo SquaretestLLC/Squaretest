@@ -1,0 +1,658 @@
+package com.myapp;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.robolectric.RobolectricTestRunner;
+
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+@RunWith(RobolectricTestRunner.class)
+public class MyClassTest {
+
+    @Mock
+    private FooService mockFooService;
+
+    private MyClass myClassUnderTest;
+
+    @Before
+    public void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockFooService);
+    }
+
+    @Test
+    public void testGet() {
+        // Setup
+        final FooData5 expectedResult = new FooData5();
+        expectedResult.setFooData5Id("fooData5Id");
+        expectedResult.setFooData5Name("fooData5Name");
+
+        // Run the test
+        final FooData5 result = myClassUnderTest.get(0);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testAddAll1() {
+        // Setup
+        final FooData5 fooData5 = new FooData5();
+        fooData5.setFooData5Id("fooData5Id");
+        fooData5.setFooData5Name("fooData5Name");
+        final Collection<? extends FooData5> c = Arrays.asList(fooData5);
+
+        // Run the test
+        final boolean result = myClassUnderTest.addAll(c);
+
+        // Verify the results
+        assertFalse(result);
+    }
+
+    @Test
+    public void testRemoveAll() {
+        assertFalse(myClassUnderTest.removeAll(Arrays.asList("value")));
+    }
+
+    @Test
+    public void testRemoveIf() {
+        // Setup
+        final Predicate<? super FooData5> filter = val -> {
+            return false;
+        };
+
+        // Run the test
+        final boolean result = myClassUnderTest.removeIf(filter);
+
+        // Verify the results
+        assertFalse(result);
+    }
+
+    @Test
+    public void testGetTheValues() {
+        // Setup
+        final FooData5 fooData5 = new FooData5();
+        fooData5.setFooData5Id("fooData5Id");
+        fooData5.setFooData5Name("fooData5Name");
+        final MyList<FooData5> expectedResult = new MyList<>(Arrays.asList(fooData5));
+
+        // Run the test
+        final MyList<FooData5> result = myClassUnderTest.getTheValues();
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testGetFooDatas1() {
+        // Setup
+        final FooData1 fooData1 = new FooData1();
+        fooData1.setId("id");
+        fooData1.setName("name");
+        final SubFoo subFoo = new SubFoo();
+        subFoo.setSubFooId("subFooId");
+        subFoo.setSubFooName("subFooName");
+        fooData1.setSubFoos(Arrays.asList(subFoo));
+        final MyList<FooData1> expectedResult = new MyList<>(Arrays.asList(fooData1));
+
+        // Run the test
+        final MyList<FooData1> result = myClassUnderTest.getFooDatas();
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testGetFooDatas2() {
+        // Setup
+        final FooData1 fooData1 = new FooData1();
+        fooData1.setId("id");
+        fooData1.setName("name");
+        final SubFoo subFoo = new SubFoo();
+        subFoo.setSubFooId("subFooId");
+        subFoo.setSubFooName("subFooName");
+        fooData1.setSubFoos(Arrays.asList(subFoo));
+        final ArrayList<FooData1> fooDatas = new ArrayList<>(Arrays.asList(fooData1));
+        final FooData1 fooData11 = new FooData1();
+        fooData11.setId("id");
+        fooData11.setName("name");
+        final SubFoo subFoo1 = new SubFoo();
+        subFoo1.setSubFooId("subFooId");
+        subFoo1.setSubFooName("subFooName");
+        fooData11.setSubFoos(Arrays.asList(subFoo1));
+        final List<FooData1> expectedResult = Arrays.asList(fooData11);
+
+        // Run the test
+        final List<FooData1> result = myClassUnderTest.getFooDatas(fooDatas);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testGetFooFromService() {
+        // Setup
+        final FooData1 fooData1 = new FooData1();
+        fooData1.setId("id");
+        fooData1.setName("name");
+        final SubFoo subFoo = new SubFoo();
+        subFoo.setSubFooId("subFooId");
+        subFoo.setSubFooName("subFooName");
+        fooData1.setSubFoos(Arrays.asList(subFoo));
+        final MyList<FooData1> expectedResult = new MyList<>(Arrays.asList(fooData1));
+
+        // Configure FooService.getFooData1(...).
+        final FooData1 fooData11 = new FooData1();
+        fooData11.setId("id");
+        fooData11.setName("name");
+        final SubFoo subFoo1 = new SubFoo();
+        subFoo1.setSubFooId("subFooId");
+        subFoo1.setSubFooName("subFooName");
+        fooData11.setSubFoos(Arrays.asList(subFoo1));
+        final MyList<FooData1> fooData1s = new MyList<>(Arrays.asList(fooData11));
+        when(mockFooService.getFooData1("id")).thenReturn(fooData1s);
+
+        // Run the test
+        final MyList<FooData1> result = myClassUnderTest.getFooFromService("id");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testGetFooFromService_FooServiceReturnsNoItems() {
+        // Setup
+        when(mockFooService.getFooData1("id")).thenReturn(new MyList<>());
+
+        // Run the test
+        final MyList<FooData1> result = myClassUnderTest.getFooFromService("id");
+
+        // Verify the results
+        assertEquals(new MyList<>(), result);
+    }
+
+    @Test
+    public void testLoadData1() {
+        // Setup
+        when(mockFooService.loadData1(String.class, "theId")).thenReturn("result");
+
+        // Run the test
+        final String result = myClassUnderTest.loadData1(String.class, "theId");
+
+        // Verify the results
+        assertEquals("result", result);
+    }
+
+    @Test
+    public void testLoadDatas1() {
+        // Setup
+        when(mockFooService.loadDatas1(String.class, "theId")).thenReturn(Arrays.asList("value"));
+
+        // Run the test
+        final List<String> result = myClassUnderTest.loadDatas1(String.class, "theId");
+
+        // Verify the results
+        assertEquals(Arrays.asList("value"), result);
+    }
+
+    @Test
+    public void testLoadDatas1_FooServiceReturnsNoItems() {
+        // Setup
+        when(mockFooService.loadDatas1(String.class, "theId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<String> result = myClassUnderTest.loadDatas1(String.class, "theId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    public void testLoadData2() {
+        // Setup
+        final FooData2 expectedResult = new FooData2();
+        expectedResult.setFooData2Id("fooData2Id");
+        expectedResult.setFooData2Name("fooData2Name");
+
+        // Configure FooService.loadData1(...).
+        final FooData2 fooData2 = new FooData2();
+        fooData2.setFooData2Id("fooData2Id");
+        fooData2.setFooData2Name("fooData2Name");
+        when(mockFooService.loadData1(FooData2.class, "theId")).thenReturn(fooData2);
+
+        // Run the test
+        final FooData2 result = myClassUnderTest.loadData2(FooData2.class, "theId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testLoadDatas2() {
+        // Setup
+        final FooData2 fooData2 = new FooData2();
+        fooData2.setFooData2Id("fooData2Id");
+        fooData2.setFooData2Name("fooData2Name");
+        final List<FooData2> expectedResult = Arrays.asList(fooData2);
+
+        // Configure FooService.loadDatas1(...).
+        final FooData2 fooData21 = new FooData2();
+        fooData21.setFooData2Id("fooData2Id");
+        fooData21.setFooData2Name("fooData2Name");
+        final List<FooData2> fooData2s = Arrays.asList(fooData21);
+        when(mockFooService.loadDatas1(FooData2.class, "theId")).thenReturn(fooData2s);
+
+        // Run the test
+        final List<FooData2> result = myClassUnderTest.loadDatas2(FooData2.class, "theId");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testLoadDatas2_FooServiceReturnsNoItems() {
+        // Setup
+        when(mockFooService.loadDatas1(FooData2.class, "theId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<FooData2> result = myClassUnderTest.loadDatas2(FooData2.class, "theId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    public void testLoadFooData3() {
+        // Setup
+        final FooData3 expectedResult = new FooData3();
+        expectedResult.setFooData3Id("fooData3Id");
+        expectedResult.setFooData3Name("fooData3Name");
+
+        when(mockFooService.loadData2(String.class, "loadFooData3Param")).thenReturn("result");
+
+        // Run the test
+        final FooData3 result = myClassUnderTest.loadFooData3("loadFooData3Param");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testLoadFooData4() {
+        // Setup
+        final FooData4 expectedResult = new FooData4();
+        expectedResult.setFooData4Id("fooData4Id");
+        expectedResult.setFooData4Name("fooData4Name");
+
+        when(mockFooService.loadData2(String.class, "loadFooData3Param")).thenReturn("result");
+
+        // Run the test
+        final FooData4 result = myClassUnderTest.loadFooData4("loadFooData3Param");
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testSort1() {
+        // Setup
+        // Run the test
+        BaseClass.sort(Arrays.asList("value"));
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSort2() {
+        // Setup
+        final Comparator<? super String> c = Comparator.comparing(Object::toString);
+
+        // Run the test
+        BaseClass.sort(Arrays.asList("value"), c);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testBinarySearch1() {
+        assertEquals(-1, BaseClass.binarySearch(Arrays.asList(), "key"));
+    }
+
+    @Test
+    public void testBinarySearch2() {
+        assertEquals(-1, BaseClass.binarySearch(Arrays.asList("value"), "key", Comparator.comparing(Object::toString)));
+    }
+
+    @Test
+    public void testShuffle() {
+        // Setup
+        // Run the test
+        BaseClass.shuffle(Arrays.asList("value"));
+
+        // Verify the results
+    }
+
+    @Test
+    public void testCopy() {
+        // Setup
+        // Run the test
+        BaseClass.copy(Arrays.asList("value"), Arrays.asList("value"));
+
+        // Verify the results
+    }
+
+    @Test
+    public void testMin() {
+        assertNull(BaseClass.min(Arrays.asList("value")));
+    }
+
+    @Test
+    public void testDefaultIfBlank() {
+        assertEquals("result", BaseClass.defaultIfBlank("str", "defaultStr"));
+    }
+
+    @Test
+    public void testFirstNonBlank() {
+        assertEquals("result", BaseClass.firstNonBlank("values"));
+    }
+
+    @Test
+    public void testGetIfBlank() {
+        assertEquals("result", BaseClass.getIfBlank("str", () -> "value"));
+    }
+
+    @Test
+    public void testGetIfEmpty() {
+        assertEquals("result", BaseClass.getIfEmpty("str", () -> "value"));
+    }
+
+    @Test
+    public void testJoin() {
+        assertEquals("result", BaseClass.join("elements"));
+    }
+
+    @Test
+    public void testTrimToSize() {
+        // Setup
+        // Run the test
+        myClassUnderTest.trimToSize();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testEnsureCapacity() {
+        // Setup
+        // Run the test
+        myClassUnderTest.ensureCapacity(0);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSize() {
+        assertEquals(0, myClassUnderTest.size());
+    }
+
+    @Test
+    public void testIsEmpty() {
+        assertFalse(myClassUnderTest.isEmpty());
+    }
+
+    @Test
+    public void testContains() {
+        assertFalse(myClassUnderTest.contains("o"));
+    }
+
+    @Test
+    public void testIndexOf() {
+        assertEquals(0, myClassUnderTest.indexOf("o"));
+    }
+
+    @Test
+    public void testLastIndexOf() {
+        assertEquals(0, myClassUnderTest.lastIndexOf("o"));
+    }
+
+    @Test
+    public void testClone() {
+        assertEquals("result", myClassUnderTest.clone());
+    }
+
+    @Test
+    public void testToArray1() {
+        assertArrayEquals(new Object[]{"result"}, myClassUnderTest.toArray());
+    }
+
+    @Test
+    public void testToArray2() {
+        assertArrayEquals(new String[]{"result"}, myClassUnderTest.toArray(new String[]{"a"}));
+        assertArrayEquals(new String[]{}, myClassUnderTest.toArray(new String[]{"a"}));
+    }
+
+    @Test
+    public void testSet() {
+        // Setup
+        final FooData5 element = new FooData5();
+        element.setFooData5Id("fooData5Id");
+        element.setFooData5Name("fooData5Name");
+
+        final FooData5 expectedResult = new FooData5();
+        expectedResult.setFooData5Id("fooData5Id");
+        expectedResult.setFooData5Name("fooData5Name");
+
+        // Run the test
+        final FooData5 result = myClassUnderTest.set(0, element);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testAdd1() {
+        // Setup
+        final FooData5 e = new FooData5();
+        e.setFooData5Id("fooData5Id");
+        e.setFooData5Name("fooData5Name");
+
+        // Run the test
+        final boolean result = myClassUnderTest.add(e);
+
+        // Verify the results
+        assertFalse(result);
+    }
+
+    @Test
+    public void testAdd2() {
+        // Setup
+        final FooData5 element = new FooData5();
+        element.setFooData5Id("fooData5Id");
+        element.setFooData5Name("fooData5Name");
+
+        // Run the test
+        myClassUnderTest.add(0, element);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testRemove1() {
+        // Setup
+        final FooData5 expectedResult = new FooData5();
+        expectedResult.setFooData5Id("fooData5Id");
+        expectedResult.setFooData5Name("fooData5Name");
+
+        // Run the test
+        final FooData5 result = myClassUnderTest.remove(0);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testRemove2() {
+        assertFalse(myClassUnderTest.remove("o"));
+    }
+
+    @Test
+    public void testClear() {
+        // Setup
+        // Run the test
+        myClassUnderTest.clear();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testAddAll2() {
+        // Setup
+        final FooData5 fooData5 = new FooData5();
+        fooData5.setFooData5Id("fooData5Id");
+        fooData5.setFooData5Name("fooData5Name");
+        final Collection<? extends FooData5> c = Arrays.asList(fooData5);
+
+        // Run the test
+        final boolean result = myClassUnderTest.addAll(0, c);
+
+        // Verify the results
+        assertFalse(result);
+    }
+
+    @Test
+    public void testRetainAll() {
+        assertFalse(myClassUnderTest.retainAll(Arrays.asList("value")));
+    }
+
+    @Test
+    public void testListIterator1() {
+        // Setup
+        // Run the test
+        final ListIterator<FooData5> result = myClassUnderTest.listIterator(0);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testListIterator2() {
+        // Setup
+        // Run the test
+        final ListIterator<FooData5> result = myClassUnderTest.listIterator();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testIterator() {
+        // Setup
+        // Run the test
+        final Iterator<FooData5> result = myClassUnderTest.iterator();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSubList() {
+        // Setup
+        final FooData5 fooData5 = new FooData5();
+        fooData5.setFooData5Id("fooData5Id");
+        fooData5.setFooData5Name("fooData5Name");
+        final List<FooData5> expectedResult = Arrays.asList(fooData5);
+
+        // Run the test
+        final List<FooData5> result = myClassUnderTest.subList(0, 0);
+
+        // Verify the results
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testForEach() {
+        // Setup
+        final Consumer<? super FooData5> mockAction = mock(Consumer.class);
+
+        // Run the test
+        myClassUnderTest.forEach(mockAction);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSpliterator() {
+        // Setup
+        // Run the test
+        final Spliterator<FooData5> result = myClassUnderTest.spliterator();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testReplaceAll() {
+        // Setup
+        final UnaryOperator<FooData5> operator = val -> val;
+
+        // Run the test
+        myClassUnderTest.replaceAll(operator);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSort3() {
+        // Setup
+        final Comparator<? super FooData5> c = Comparator.comparing(Object::toString);
+
+        // Run the test
+        myClassUnderTest.sort(c);
+
+        // Verify the results
+    }
+
+    @Test
+    public void testEquals() {
+        assertFalse(myClassUnderTest.equals("o"));
+    }
+
+    @Test
+    public void testHashCode() {
+        assertEquals(0, myClassUnderTest.hashCode());
+    }
+
+    @Test
+    public void testContainsAll() {
+        assertFalse(myClassUnderTest.containsAll(Arrays.asList("value")));
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("result", myClassUnderTest.toString());
+    }
+
+    @Test
+    public void testStream() {
+        // Setup
+        // Run the test
+        final Stream<FooData5> result = myClassUnderTest.stream();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testParallelStream() {
+        // Setup
+        // Run the test
+        final Stream<FooData5> result = myClassUnderTest.parallelStream();
+
+        // Verify the results
+    }
+}

@@ -1,0 +1,49 @@
+package com.myapp;
+
+import com.myapp.foos.Foo;
+import com.myapp.foos.FooMaker;
+import com.myapp.foos.SimpleBean;
+import org.mockito.Mock;
+import org.mockito.testng.MockitoTestNGListener;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Arrays;
+
+import static org.mockito.Mockito.when;
+
+@Listeners(MockitoTestNGListener.class)
+public class MyClassTest {
+
+    @Mock
+    private FooMaker mockFooMaker;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeMethod
+    public void setUp() {
+        myClassUnderTest = new MyClass(mockFooMaker);
+    }
+
+    @Test
+    public void testMakeFoo1() {
+        // Setup
+        // Configure FooMaker.makeFoo1(...).
+        final SimpleBean simpleBean = new SimpleBean();
+        simpleBean.setMyId(0L);
+        simpleBean.setMyName("myName");
+        simpleBean.setMyOtherId(0L);
+        simpleBean.setMyLastName("myLastName");
+        simpleBean.setMyCreationDate(LocalDateTime.of(2020, 1, 1, 0, 0, 0, 0).toInstant(ZoneOffset.UTC));
+        final Foo<SimpleBean> simpleBeanFoo = new Foo<>(0, Arrays.asList(simpleBean));
+        when(mockFooMaker.makeFoo1()).thenReturn(simpleBeanFoo);
+
+        // Run the test
+        final Foo<SimpleBean> result = myClassUnderTest.makeFoo1();
+
+        // Verify the results
+    }
+}

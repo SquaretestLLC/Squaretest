@@ -1,0 +1,52 @@
+package com.myapp
+
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+
+import static org.junit.Assert.assertFalse
+
+@CompileStatic
+@RunWith(RobolectricTestRunner.class)
+class MyClassTest {
+
+    private MyClass myClassUnderTest
+
+    @Before
+    void setUp() {
+        myClassUnderTest = new MyClass("displayName", "canonicalName", ["value"], "canonicalText",
+                "defaultInitExpression", false)
+    }
+
+    @Test
+    void testGetDisplayName() {
+        assert "displayName" == myClassUnderTest.getDisplayName()
+    }
+
+    @Test
+    void testGetCanonicalName() {
+        assert "canonicalName" == myClassUnderTest.getCanonicalName()
+    }
+
+    @Test
+    void testGetCanonicalNamesRequiredForType() {
+        assert ["value"] == myClassUnderTest.getCanonicalNamesRequiredForType()
+    }
+
+    @Test
+    void testGetCanonicalText() {
+        assert "canonicalText" == myClassUnderTest.getCanonicalText()
+    }
+
+    @Test
+    void testGetDefaultInitExpression() {
+        assert "defaultInitExpression" == myClassUnderTest.getDefaultInitExpression()
+    }
+
+    @Test
+    void testIsCanBeMocked() {
+        assertFalse(myClassUnderTest.isCanBeMocked())
+    }
+}

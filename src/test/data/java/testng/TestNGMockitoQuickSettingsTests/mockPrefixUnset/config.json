@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-TestNGMockito.java",
+  "replacementLines" : [
+      "#set($mockDependencyMemberNamePrefix = \"mock\")", "#set($mockDependencyMemberNamePrefix = \"\")"
+  ]
+}

@@ -1,0 +1,97 @@
+package com.myapp
+
+import groovy.transform.CompileStatic
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy
+import static org.mockito.Mockito.when
+
+@CompileStatic
+@RunWith(MockitoJUnitRunner.class)
+class MyClassTest {
+
+    @Mock
+    private FooService mockNewFooService
+    @Mock
+    private FooService mockOldFooService
+
+    private MyClass myClassUnderTest
+
+    @Before
+    void setUp() {
+        myClassUnderTest = new MyClass(mockNewFooService, mockOldFooService)
+    }
+
+    @Test
+    void testGetFooData() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenReturn(new FooData("name", 0L))
+
+        // Run the test
+        def result = myClassUnderTest.getFooData(0)
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetFooData_NewFooServiceReturnsNull() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenReturn(null)
+        when(mockOldFooService.getFooData(0L)).thenReturn(new FooData("name", 0L))
+
+        // Run the test
+        def result = myClassUnderTest.getFooData(0)
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetFooData_NewFooServiceThrowsFooServiceException() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenThrow(FooServiceException.class)
+
+        // Run the test
+        assertThatThrownBy({
+            myClassUnderTest.getFooData(0)
+        }).isInstanceOf(FooServiceException.class)
+    }
+
+    @Test
+    void testGetFooData_NewFooServiceThrowsFooNetworkException() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenThrow(FooNetworkException.class)
+
+        // Run the test
+        assertThatThrownBy({
+            myClassUnderTest.getFooData(0)
+        }).isInstanceOf(FooNetworkException.class)
+    }
+
+    @Test
+    void testGetFooData_OldFooServiceThrowsFooServiceException() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenReturn(null)
+        when(mockOldFooService.getFooData(0L)).thenThrow(FooServiceException.class)
+
+        // Run the test
+        assertThatThrownBy({
+            myClassUnderTest.getFooData(0)
+        }).isInstanceOf(FooServiceException.class)
+    }
+
+    @Test
+    void testGetFooData_OldFooServiceThrowsFooNetworkException() {
+        // Setup
+        when(mockNewFooService.getFooData(0L)).thenReturn(null)
+        when(mockOldFooService.getFooData(0L)).thenThrow(FooNetworkException.class)
+
+        // Run the test
+        assertThatThrownBy({
+            myClassUnderTest.getFooData(0)
+        }).isInstanceOf(FooNetworkException.class)
+    }
+}

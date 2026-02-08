@@ -1,0 +1,315 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+class MyClassTest {
+
+    @Mock
+    private OrderService mockOrderService;
+    @Mock
+    private MetricService mockMetricService;
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        initMocks(this);
+        myClassUnderTest = new MyClass(mockOrderService, mockMetricService);
+    }
+
+    @Test
+    void testGetOrdersWithId1() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId1("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetOrdersWithId1_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId1("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testGetOrdersWithId1_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        assertThrows(NetworkException.class, () -> myClassUnderTest.getOrdersWithId1("customerId"));
+    }
+
+    @Test
+    void testGetOrdersWithId1_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        assertThrows(ServiceException.class, () -> myClassUnderTest.getOrdersWithId1("customerId"));
+    }
+
+    @Test
+    void testGetOrdersWithId2() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId2("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetOrdersWithId2_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId2("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testGetOrdersWithId2_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        assertThrows(NetworkException.class, () -> myClassUnderTest.getOrdersWithId2("customerId"));
+        verify(mockMetricService).recordOrderNetworkException(any(NetworkException.class));
+    }
+
+    @Test
+    void testGetOrdersWithId2_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        assertThrows(ServiceException.class, () -> myClassUnderTest.getOrdersWithId2("customerId"));
+        verify(mockMetricService).recordOrderServiceException(any(ServiceException.class));
+    }
+
+    @Test
+    void testGetOrdersWithId3() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId3("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetOrdersWithId3_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.getOrdersWithId3("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testGetOrdersWithId3_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        assertThrows(NetworkException.class, () -> myClassUnderTest.getOrdersWithId3("customerId"));
+        verify(mockMetricService).recordOrderException(any(RuntimeException.class));
+    }
+
+    @Test
+    void testGetOrdersWithId3_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        assertThrows(ServiceException.class, () -> myClassUnderTest.getOrdersWithId3("customerId"));
+        verify(mockMetricService).recordOrderException(any(RuntimeException.class));
+    }
+
+    @Test
+    void testSafeGetOrdersWithId1() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId1("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testSafeGetOrdersWithId1_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId1("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testSafeGetOrdersWithId1_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId1("customerId");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testSafeGetOrdersWithId1_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId1("customerId");
+
+        // Verify the results
+        assertNull(result);
+    }
+
+    @Test
+    void testSafeGetOrdersWithId2() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId2("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testSafeGetOrdersWithId2_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId2("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testSafeGetOrdersWithId2_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId2("customerId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricService).recordOrderNetworkException(any(NetworkException.class));
+    }
+
+    @Test
+    void testSafeGetOrdersWithId2_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId2("customerId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricService).recordOrderServiceException(any(ServiceException.class));
+    }
+
+    @Test
+    void testSafeGetOrdersWithId3() {
+        // Setup
+        // Configure OrderService.getOrdersWithCustomerId(...).
+        final List<Order> orders = Arrays.asList(new Order("orderId", "description"));
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(orders);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId3("customerId");
+
+        // Verify the results
+    }
+
+    @Test
+    void testSafeGetOrdersWithId3_OrderServiceReturnsNoItems() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId3("customerId");
+
+        // Verify the results
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void testSafeGetOrdersWithId3_OrderServiceThrowsNetworkException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(NetworkException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId3("customerId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricService).recordOrderException(any(RuntimeException.class));
+    }
+
+    @Test
+    void testSafeGetOrdersWithId3_OrderServiceThrowsServiceException() {
+        // Setup
+        when(mockOrderService.getOrdersWithCustomerId("customerId")).thenThrow(ServiceException.class);
+
+        // Run the test
+        final List<Order> result = myClassUnderTest.safeGetOrdersWithId3("customerId");
+
+        // Verify the results
+        assertNull(result);
+        verify(mockMetricService).recordOrderException(any(RuntimeException.class));
+    }
+}

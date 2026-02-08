@@ -1,0 +1,6 @@
+{
+  "internalTemplateName" : "SQTJ-JUnit4MockitoSpring.java",
+  "replacementLines" : [
+      "#set($mockDependencyMemberNamePrefix = \"mock\")", "#set($mockDependencyMemberNamePrefix = \"\")"
+  ]
+}

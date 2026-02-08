@@ -1,0 +1,211 @@
+/*
+ * Copyright 2026 Squaretest LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.myapp;
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ClassToInstanceMap;
+import com.google.common.collect.ConcurrentHashMultiset;
+import com.google.common.collect.EnumBiMap;
+import com.google.common.collect.EnumHashBiMap;
+import com.google.common.collect.EnumMultiset;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.HashBiMap;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.ImmutableClassToInstanceMap;
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableMultiset;
+import com.google.common.collect.ImmutableRangeMap;
+import com.google.common.collect.ImmutableRangeSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSetMultimap;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.LinkedHashMultiset;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.ListMultimap;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.Period;
+import java.time.Year;
+import java.time.YearMonth;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Currency;
+import java.util.Date;
+import java.util.Deque;
+import java.util.Dictionary;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.IdentityHashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.PriorityQueue;
+import java.util.Properties;
+import java.util.Queue;
+import java.util.RandomAccess;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.Stack;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.Vector;
+import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+public class MyClass {
+
+    ArrayListMultimap ArrayListMultimap1 = ArrayListMultimap.create();
+    Float Float1 = 0.0f;
+    ListMultimap ListMultimap1 = LinkedListMultimap.create();
+    ZonedDateTime ZonedDateTime1 = ZonedDateTime.of(LocalDateTime.of(2017,1,1,0,0), ZoneId.of("Z"));
+    HashBasedTable HashBasedTable1 = HashBasedTable.create();
+    Integer Integer1 = 0;
+    ImmutableRangeMap ImmutableRangeMap1 = ImmutableRangeMap.of();
+    BigDecimal BigDecimal1 = new BigDecimal("0.00");
+    Vector Vector1 = new Vector(Arrays.asList());
+    Character Character1 = 'a';
+    Long Long1 = 0L;
+    Map Map1 = new HashMap<>();
+    LinkedHashMultiset LinkedHashMultiset1 = LinkedHashMultiset.create();
+    BigInteger BigInteger1 = new BigInteger("100");
+    ImmutableRangeSet ImmutableRangeSet1 = ImmutableRangeSet.of();
+    ZoneOffset ZoneOffset1 = ZoneOffset.UTC;
+    LinkedHashMultimap LinkedHashMultimap1 = LinkedHashMultimap.create();
+    Void Void1 = null;
+    GregorianCalendar GregorianCalendar1 = new GregorianCalendar(2017, 1, 1, 0, 0, 0);
+    byte byte1 = (byte) 0b0;
+    double double1 = 0.0;
+    ConcurrentNavigableMap ConcurrentNavigableMap1 = new ConcurrentSkipListMap<>();
+    Set Set1 = new HashSet<>();
+    CopyOnWriteArraySet CopyOnWriteArraySet1 = new CopyOnWriteArraySet<>(Arrays.asList());
+    ImmutableListMultimap ImmutableListMultimap1 = ImmutableListMultimap.of();
+    StringBuilder StringBuilder1 = new StringBuilder();
+    Dictionary Dictionary1 = new Hashtable<>();
+    CopyOnWriteArrayList CopyOnWriteArrayList1 = new CopyOnWriteArrayList<>(Arrays.asList());
+    Double Double1 = 0.0;
+    LocalDateTime LocalDateTime1 = LocalDateTime.of(2017, 1, 1, 0, 0, 0);
+    SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'", Locale.US);
+    Currency Currency1 = Currency.getInstance("USD");
+    TreeSet TreeSet1 = new TreeSet<>(Arrays.asList());
+    long long1 = 0L;
+    ArrayList ArrayList1 = new ArrayList<>(Arrays.asList());
+    LinkedHashMap LinkedHashMap1 = new LinkedHashMap<>();
+    RandomAccess RandomAccess1 = new ArrayList<>(Arrays.asList());
+    ClassToInstanceMap ClassToInstanceMap1 = new ImmutableClassToInstanceMap.Builder().build();
+    ImmutableMultiset ImmutableMultiset1 = ImmutableMultiset.of();
+    ImmutableMultimap ImmutableMultimap1 = ImmutableListMultimap.of();
+    Number Number1 = new BigDecimal("0.00");
+    ImmutableSortedMap ImmutableSortedMap1 = ImmutableSortedMap.of();
+    LinkedHashSet LinkedHashSet1 = new LinkedHashSet<>();
+    ImmutableSortedSet ImmutableSortedSet1 = ImmutableSortedSet.of();
+    Properties Properties1 = new Properties();
+    ConcurrentHashMultiset ConcurrentHashMultiset1 = ConcurrentHashMultiset.create(Arrays.asList());
+    TreeMap TreeMap1 = new TreeMap<>();
+    DayOfWeek DayOfWeek1 = DayOfWeek.FRIDAY;
+    char char1 = 'a';
+    YearMonth YearMonth1 = YearMonth.of(2017, Month.JANUARY);
+    SortedSet SortedSet1 = new TreeSet<>(Arrays.asList());
+    Date Date1 = new GregorianCalendar(2020, Calendar.JANUARY, 1).getTime();
+    PriorityQueue PriorityQueue1 = new PriorityQueue<>();
+    ImmutableCollection ImmutableCollection1 = ImmutableList.of();
+    float float1 = 0.0f;
+    ArrayTable ArrayTable1 = ArrayTable.create(Arrays.asList(), Arrays.asList());
+    HashMultimap HashMultimap1 = HashMultimap.create();
+    HashMultiset HashMultiset1 = HashMultiset.create(Arrays.asList());
+    Short Short1 = 0;
+    Locale Locale1 = Locale.US;
+    LocalTime LocalTime1 = LocalTime.of(12, 0, 0);
+    Byte Byte1 = (byte) 0b0;
+    DateFormat DateFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'", Locale.US);
+    ImmutableSetMultimap ImmutableSetMultimap1 = ImmutableSetMultimap.of();
+    LinkedListMultimap LinkedListMultimap1 = LinkedListMultimap.create();
+    BiMap BiMap1 = HashBiMap.create(ImmutableMap.of());
+    ImmutableSet ImmutableSet1 = ImmutableSet.of();
+    IdentityHashMap IdentityHashMap1 = new IdentityHashMap<>();
+    ImmutableMap ImmutableMap1 = ImmutableMap.of();
+    Collection Collection1 = Arrays.asList();
+    NavigableSet NavigableSet1 = new TreeSet<>(Arrays.asList());
+    NavigableMap NavigableMap1 = new TreeMap<>();
+    List List1 = Arrays.asList();
+    Year Year1 = Year.of(2017);
+    LocalDate LocalDate1 = LocalDate.of(2017, 1, 1);
+    Queue Queue1 = new LinkedList<>(Arrays.asList());
+    ImmutableClassToInstanceMap ImmutableClassToInstanceMap1 = new ImmutableClassToInstanceMap.Builder().build();
+    SortedMap SortedMap1 = new TreeMap<>();
+    EnumHashBiMap EnumHashBiMap1 = null;
+    EnumBiMap EnumBiMap1 = null;
+    HashMap HashMap1 = new HashMap<>();
+    Deque Deque1 = new LinkedList<>(Arrays.asList());
+    Stack Stack1 = new Stack<>();
+    ConcurrentMap ConcurrentMap1 = new ConcurrentHashMap<>();
+    HashSet HashSet1 = new HashSet<>(Arrays.asList());
+    Charset Charset1 = StandardCharsets.UTF_8;
+    EvictingQueue EvictingQueue1 = EvictingQueue.create(10);
+    Boolean Boolean1 = false;
+    LinkedList LinkedList1 = new LinkedList<>(Arrays.asList());
+    Hashtable Hashtable1 = new Hashtable<>();
+    WeakHashMap WeakHashMap1 = new WeakHashMap<>();
+    Period Period1 = Period.between(LocalDate.of(2017, 1, 1), LocalDate.of(2017, 1, 2));
+    Month Month1 = Month.JANUARY;
+    MonthDay MonthDay1 = MonthDay.of(Month.JANUARY, 1);
+    int int1 = 0;
+    HashBiMap HashBiMap1 = HashBiMap.create(ImmutableMap.of());
+    boolean boolean1 = false;
+    ImmutableTable ImmutableTable1 = ImmutableTable.builder().build();
+    short short1 = 0;
+    BitSet BitSet1 = new BitSet();
+    EnumMultiset EnumMultiset1 = null;
+}

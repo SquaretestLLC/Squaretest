@@ -1,0 +1,65 @@
+package com.myapp;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+class MyClassTest {
+
+    private MyClass myClassUnderTest;
+
+    @BeforeEach
+    void setUp() {
+        myClassUnderTest = new MyClass();
+    }
+
+    @Test
+    void testDoDatabaseIO() throws Exception {
+        // Setup
+        // Run the test
+        myClassUnderTest.doDatabaseIO();
+
+        // Verify the results
+    }
+
+    @Test
+    void testDoDatabaseIO_ThrowsIOException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> myClassUnderTest.doDatabaseIO()).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    void testDoDatabaseIO_ThrowsSQLException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> myClassUnderTest.doDatabaseIO()).isInstanceOf(SQLException.class);
+    }
+
+    @Test
+    void testCreateDatabaseConnection() throws Exception {
+        // Setup
+        // Run the test
+        MyClass.createDatabaseConnection();
+
+        // Verify the results
+    }
+
+    @Test
+    void testCreateDatabaseConnection_ThrowsIOException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> MyClass.createDatabaseConnection()).isInstanceOf(IOException.class);
+    }
+
+    @Test
+    void testCreateDatabaseConnection_ThrowsSQLException() {
+        // Setup
+        // Run the test
+        assertThatThrownBy(() -> MyClass.createDatabaseConnection()).isInstanceOf(SQLException.class);
+    }
+}

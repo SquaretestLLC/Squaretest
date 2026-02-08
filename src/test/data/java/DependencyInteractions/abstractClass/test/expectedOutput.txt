@@ -1,0 +1,12 @@
+MyClass(someStringDep)
+
+doSomething()
+ someStringDep.toUpperCase()
+  callstack:
+   someStringDep.toUpperCase() in doSomething()
+
+doSomethingImportant()
+
+getData()
+
+getSomethingSpecial()
