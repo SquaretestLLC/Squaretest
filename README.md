@@ -163,7 +163,7 @@ Run the following command to build only the plugin.
 ```
 
 Run the following command to build the plugin, run the automated tests and the binary compatibility verifier.<br>
-<b>Warning: this will take a long time to run.<b>
+<b>Warning: this will take a long time to run.</b>
 ```
 ./gradlew.bat buildAll
 ```
